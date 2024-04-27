@@ -5,11 +5,17 @@ import { UnidadeseducativasModule } from './unidadeseducativas/unidadeseducativa
 import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
 import { FilesModule } from './files/files.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { CloudinaryService } from './cloudinary/cloudinary.service';
 
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+
+
+    CloudinaryModule,
+    
+    ConfigModule.forRoot({isGlobal:true}),
 
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -33,6 +39,6 @@ import { FilesModule } from './files/files.module';
 
   ],
   controllers: [],
-  providers: [],
+  providers: [CloudinaryService],
 })
 export class AppModule {}

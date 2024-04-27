@@ -1,31 +1,33 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors,BadRequestException, UploadedFile } from '@nestjs/common';
-import { FilesService } from './files.service';
+import { Controller, Post, UploadedFile, UseInterceptors, BadRequestException } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { fileFilter } from './helpers/fileFilter.helper';
-
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Controller('files')
 export class FilesController {
-  constructor(private readonly filesService: FilesService) {}
+  constructor(private cloudinary: CloudinaryService) {}
 
   @Post('unidadeducativa')
-  @UseInterceptors(FileInterceptor('file',{
-    fileFilter:fileFilter
-  }))
-  uploadUnidadEducativaFoto(
-    @UploadedFile() file:Express.Multer.File
-    
-    ){
-      
-      if ( !file ) {
-        throw new BadRequestException('Make sure that the file is an image');
-      }
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadUnidadEducativaFoto(
+    @UploadedFile() file: Express.Multer.File
+  ) {
+    if (!file) {
+      throw new BadRequestException('Make sure that the file is an image');
+    }
 
-      return {
-        fileName : file.originalname
-      };
+    const uploadedImage = await this.uploadImageToCloudinary(file);
     
+    // Aquí se devuelve la URL de Cloudinary en la respuesta
+    return {
+      imageUrl: uploadedImage.url,
+    };
   }
 
- 
+  async uploadImageToCloudinary(file: Express.Multer.File) {
+    try {
+      return await this.cloudinary.uploadImage(file);
+    } catch (error) {
+      throw new BadRequestException('Invalid file type.');
+    }
+  }
 }
