@@ -7,6 +7,7 @@ import { SeedModule } from './seed/seed.module';
 import { FilesModule } from './files/files.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { CloudinaryService } from './cloudinary/cloudinary.service';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -34,7 +35,9 @@ import { CloudinaryService } from './cloudinary/cloudinary.service';
 
     SeedModule,
 
-    FilesModule
+    FilesModule,
+
+    AuthModule
 
 
   ],
