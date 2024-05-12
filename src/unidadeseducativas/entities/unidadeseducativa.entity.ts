@@ -1,5 +1,7 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { UnidadEducativaFoto } from './unidadeducativa-foto.entity';
+import { Infraestructura } from 'src/infraestructuras/entities/infraestructura.entity';
+import { Tipocolegio } from 'src/tipocolegios/entities/tipocolegio.entity';
 
 @Entity({name: 'unidades_educativas'})
 export class Unidadeseducativa {
@@ -52,6 +54,15 @@ export class Unidadeseducativa {
     fotos?: UnidadEducativaFoto[];
 
 
+    //Infraestructura
+    @OneToOne(() => Infraestructura ,  { onDelete: 'SET NULL' })
+    @JoinColumn({ name: 'idInfraestructura' })
+    idInfraestructura: Infraestructura | null; // Puede ser null
+
+    //TipoColegio
+    @OneToOne(() => Tipocolegio,  { onDelete: 'SET NULL' })
+    @JoinColumn({ name: 'idTipoColegio' })
+    idTipoColegio: Tipocolegio | null; // Puede ser null
 
     @BeforeInsert()
     checkSlugInsert() {

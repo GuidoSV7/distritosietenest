@@ -1,33 +1,42 @@
-import { Controller, Post, UploadedFile, UseInterceptors, BadRequestException } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { Controller, Post, UploadedFiles, UseInterceptors, BadRequestException } from '@nestjs/common';
+import { FilesInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Controller('files')
 export class FilesController {
   constructor(private cloudinary: CloudinaryService) {}
 
-  @Post('unidadeducativa')
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadUnidadEducativaFoto(
-    @UploadedFile() file: Express.Multer.File
+  @Post('fotos')
+  @UseInterceptors(FilesInterceptor('files'))
+  async uploadUnidadEducativaFotos(
+    @UploadedFiles() files: Array<Express.Multer.File>
   ) {
-    if (!file) {
-      throw new BadRequestException('Make sure that the file is an image');
+    if (!files || files.length === 0) {
+      throw new BadRequestException('No files were uploaded.');
     }
 
-    const uploadedImage = await this.uploadImageToCloudinary(file);
-    
-    // Aquí se devuelve la URL de Cloudinary en la respuesta
+    const uploadedImages = await this.uploadImagesToCloudinary(files);
+
+    // Aquí puedes devolver las URLs de Cloudinary en la respuesta
     return {
-      imageUrl: uploadedImage.url,
+      imageUrls: uploadedImages.map(image => image.url),
     };
   }
 
-  async uploadImageToCloudinary(file: Express.Multer.File) {
-    try {
-      return await this.cloudinary.uploadImage(file);
-    } catch (error) {
-      throw new BadRequestException('Invalid file type.');
+  async uploadImagesToCloudinary(files: Array<Express.Multer.File>) {
+    const uploadedImages = [];
+
+    for (const file of files) {
+      try {
+        const uploadedImage = await this.cloudinary.uploadImage(file);
+        uploadedImages.push(uploadedImage);
+      } catch (error) {
+        // Si se produce un error al subir una imagen, puedes manejarlo aquí.
+        // Puedes optar por omitir la imagen que causó el error o lanzar una excepción, según tu lógica de negocio.
+        console.error(`Error uploading image: ${error.message}`);
+      }
     }
+
+    return uploadedImages;
   }
 }

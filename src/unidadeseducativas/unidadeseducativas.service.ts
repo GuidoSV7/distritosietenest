@@ -142,6 +142,8 @@ export class UnidadeseducativasService {
     const unidadeducativa = await this.findOne(id);
 
     await this.unidadeseducativaRepository.remove(unidadeducativa);
+
+    return { mensaje: `La Unidad Educativa con id ${id} se eliminó exitosamente.` };
     
   }
 

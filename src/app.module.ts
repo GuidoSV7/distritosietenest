@@ -8,6 +8,8 @@ import { FilesModule } from './files/files.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { CloudinaryService } from './cloudinary/cloudinary.service';
 import { AuthModule } from './auth/auth.module';
+import { InfraestructurasModule } from './infraestructuras/infraestructuras.module';
+import { TipocolegiosModule } from './tipocolegios/tipocolegios.module';
 
 
 @Module({
@@ -37,7 +39,11 @@ import { AuthModule } from './auth/auth.module';
 
     FilesModule,
 
-    AuthModule
+    AuthModule,
+
+    InfraestructurasModule,
+
+    TipocolegiosModule
 
 
   ],
