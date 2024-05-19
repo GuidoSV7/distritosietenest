@@ -37,4 +37,20 @@ export class CreateUnidadeseducativaDto {
     @IsOptional()
     fotos?: string[];
 
+    @IsNumber()
+    @IsOptional()
+    idInfraestructura?: number | null;
+
+    @IsNumber()
+    @IsOptional()
+    idTipoColegio?: number | null;
+
+    @IsNumber()
+    @IsOptional()
+    idTurno?: number | null;
+
+    @IsNumber()
+    @IsOptional()
+    idGestione?: number | null;
+
 }

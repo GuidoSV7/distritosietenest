@@ -1,42 +1,51 @@
 import { BadRequestException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
-
-import { CreateUserDto } from './dto/create-user.dto';
+import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 
 import * as bcrypt from 'bcrypt';
-import { LoginUserDto } from './dto';
+
+import { User } from './entities/user.entity';
+import { LoginUserDto, CreateUserDto } from './dto';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
+
 
 @Injectable()
 export class AuthService {
 
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>
- 
-   ) {}
+    private readonly userRepository: Repository<User>,
 
- async  create(createUserDto: CreateUserDto) {
-    try{
+    private readonly jwtService: JwtService,
+  ) {}
 
-      const {password, ...userData} = createUserDto;
 
+  async create( createUserDto: CreateUserDto) {
+    
+    try {
+
+      const { password, ...userData } = createUserDto;
+      
       const user = this.userRepository.create({
         ...userData,
-        password: bcrypt.hashSync(password, 10)
+        password: bcrypt.hashSync( password, 10 )
       });
 
-      await this.userRepository.save(user);
+      await this.userRepository.save( user )
       delete user.password;
 
-      return user;
+      return {
+        ...user,
+        token: this.getJwtToken({ id: user.id })
+      };
+      // TODO: Retornar el JWT de acceso
 
     } catch (error) {
-      throw new Error('Error al registrar el usuario');
+      this.handleDBErrors(error);
     }
-  }
 
+  }
 
   async login( loginUserDto: LoginUserDto ) {
 
@@ -55,27 +64,27 @@ export class AuthService {
 
     return {
       ...user,
-      //token: this.getJwtToken({ id: user.id })
+      token: this.getJwtToken({ id: user.id })
     };
   }
 
-  // async checkAuthStatus( user: User ){
+  async checkAuthStatus( user: User ){
 
-  //   return {
-  //     ...user,
-  //     token: this.getJwtToken({ id: user.id })
-  //   };
+    return {
+      ...user,
+      token: this.getJwtToken({ id: user.id })
+    };
 
-  // }
+  }
 
 
   
-  // private getJwtToken( payload: JwtPayload ) {
+  private getJwtToken( payload: JwtPayload ) {
 
-  //   const token = this.jwtService.sign( payload );
-  //   return token;
+    const token = this.jwtService.sign( payload );
+    return token;
 
-  // }
+  }
 
   private handleDBErrors( error: any ): never {
 

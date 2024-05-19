@@ -1,5 +1,5 @@
 
-import { Unidadeseducativa } from "src/unidadeseducativas/entities";
+import { Unidadeseducativa } from "../../unidadeseducativas/entities";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

@@ -4,6 +4,7 @@ import { IsNumber, IsOptional, IsString, MinLength, IsArray } from "class-valida
 
 
 export class UpdateUnidadeseducativaDto extends PartialType(CreateUnidadeseducativaDto) {
+
     @IsString()
     @MinLength(1)
     @IsOptional()
@@ -39,5 +40,25 @@ export class UpdateUnidadeseducativaDto extends PartialType(CreateUnidadeseducat
     @IsArray()
     @IsOptional()
     fotos?: string[];
+
+    @IsNumber()
+    @IsOptional()
+    idInfraestructura?: number;
+
+    @IsNumber()
+    @IsOptional()
+    idTipoColegio?: number;
+
+
+    @IsNumber()
+    @IsOptional()
+    idTurno?: number;
+
+    @IsNumber()
+    @IsOptional()
+    idGestione?: number;
+
+
+
 
 }

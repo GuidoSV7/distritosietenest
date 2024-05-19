@@ -5,8 +5,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Unidadeseducativa } from './entities/unidadeseducativa.entity';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from '../common/dtos/pagination.dto';
-import { isUUID } from 'class-validator';
+import { isUUID, IsString } from 'class-validator';
 import { UnidadEducativaFoto } from './entities';
+import { Tipocolegio } from '../tipocolegios/entities/tipocolegio.entity';
 
 @Injectable()
 export class UnidadeseducativasService {
@@ -28,11 +29,15 @@ export class UnidadeseducativasService {
 
     try{
 
-      const {fotos = [], ...unidadeducativaDetails} = createUnidadeseducativaDto;
+      const {fotos = [], idInfraestructura, idTipoColegio, idTurno, idGestione, ...unidadeducativaDetails} = createUnidadeseducativaDto;
 
       const unidadeducativa = this.unidadeseducativaRepository.create({
         ...unidadeducativaDetails,
-        fotos: fotos.map(foto => this.unidadeseducativaFotoRepository.create({url: foto}))
+        fotos: fotos.map(foto => this.unidadeseducativaFotoRepository.create({url: foto})),
+        idInfraestructura: { id: idInfraestructura },
+        idTipoColegio: { id: idTipoColegio },
+        idTurno: { id: idTurno },
+        idGestione: { id: idGestione }
       });
 
       return await this.unidadeseducativaRepository.save(unidadeducativa);
@@ -85,9 +90,16 @@ export class UnidadeseducativasService {
 
   async update(id: string, updateUnidadeseducativaDto: UpdateUnidadeseducativaDto) {
 
-    const {fotos, ...toUpdate} = updateUnidadeseducativaDto;
+    const { fotos, ...toUpdate } = updateUnidadeseducativaDto;
 
-    const unidadeducativa = await this.unidadeseducativaRepository.preload({id, ...toUpdate});
+    const unidadeducativa = await this.unidadeseducativaRepository.preload({
+      id,
+      ...toUpdate,
+      idInfraestructura: { id: updateUnidadeseducativaDto.idInfraestructura },
+      idTipoColegio: { id: updateUnidadeseducativaDto.idTipoColegio },
+      idTurno: { id: updateUnidadeseducativaDto.idTurno },
+      idGestione: { id: updateUnidadeseducativaDto.idGestione }
+    });
 
     if(!unidadeducativa){
       throw new NotFoundException(`Unidad Educativa con id ${id} no encontrada`);
@@ -108,6 +120,10 @@ export class UnidadeseducativasService {
         unidadeducativa.fotos = fotos.map(foto => this.unidadeseducativaFotoRepository.create({url: foto}));
 
       }
+
+
+
+
 
       await queryRunner.manager.save(unidadeducativa);
 

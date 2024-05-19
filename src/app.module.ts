@@ -10,6 +10,8 @@ import { CloudinaryService } from './cloudinary/cloudinary.service';
 import { AuthModule } from './auth/auth.module';
 import { InfraestructurasModule } from './infraestructuras/infraestructuras.module';
 import { TipocolegiosModule } from './tipocolegios/tipocolegios.module';
+import { TurnosModule } from './turnos/turnos.module';
+import { GestionesModule } from './gestiones/gestiones.module';
 
 
 @Module({
@@ -43,7 +45,11 @@ import { TipocolegiosModule } from './tipocolegios/tipocolegios.module';
 
     InfraestructurasModule,
 
-    TipocolegiosModule
+    TipocolegiosModule,
+
+    TurnosModule,
+
+    GestionesModule
 
 
   ],

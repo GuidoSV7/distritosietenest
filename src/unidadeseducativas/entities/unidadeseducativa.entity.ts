@@ -1,7 +1,9 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { UnidadEducativaFoto } from './unidadeducativa-foto.entity';
-import { Infraestructura } from 'src/infraestructuras/entities/infraestructura.entity';
-import { Tipocolegio } from 'src/tipocolegios/entities/tipocolegio.entity';
+import { Infraestructura } from '../../infraestructuras/entities/infraestructura.entity';
+import { Tipocolegio } from '../../tipocolegios/entities/tipocolegio.entity';
+import { Turno } from '../../turnos/entities/turno.entity';
+import { Gestione } from 'src/gestiones/entities/gestione.entity';
 
 @Entity({name: 'unidades_educativas'})
 export class Unidadeseducativa {
@@ -55,14 +57,25 @@ export class Unidadeseducativa {
 
 
     //Infraestructura
-    @OneToOne(() => Infraestructura ,  { onDelete: 'SET NULL' })
+    @ManyToOne(() => Infraestructura ,  { onDelete: 'SET NULL', eager: true}) //eager es para mostrar datos de la foranea en la petición
     @JoinColumn({ name: 'idInfraestructura' })
-    idInfraestructura: Infraestructura | null; // Puede ser null
+    
+    idInfraestructura?: Infraestructura | null; // Puede ser null
 
     //TipoColegio
-    @OneToOne(() => Tipocolegio,  { onDelete: 'SET NULL' })
+    @ManyToOne(() => Tipocolegio,  { onDelete: 'SET NULL' , eager: true})
     @JoinColumn({ name: 'idTipoColegio' })
-    idTipoColegio: Tipocolegio | null; // Puede ser null
+    idTipoColegio?: Tipocolegio | null; // Puede ser null
+
+    //Turno
+    @ManyToOne(() => Turno,  { onDelete: 'SET NULL' , eager: true})
+    @JoinColumn({ name: 'idTurno' })
+    idTurno?: Turno | null; // Puede ser null
+
+    //Gestione
+    @ManyToOne(() => Gestione,  { onDelete: 'SET NULL' , eager: true})
+    @JoinColumn({ name: 'idGestione' })
+    idGestione?: Gestione | null; // Puede ser null
 
     @BeforeInsert()
     checkSlugInsert() {

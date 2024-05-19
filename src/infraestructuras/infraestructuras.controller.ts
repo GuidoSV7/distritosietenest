@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, Query
 import { InfraestructurasService } from './infraestructuras.service';
 import { CreateInfraestructuraDto } from './dto/create-infraestructura.dto';
 import { UpdateInfraestructuraDto } from './dto/update-infraestructura.dto';
-import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { PaginationDto } from '../common/dtos/pagination.dto';
 
 @Controller('infraestructuras')
 export class InfraestructurasController {

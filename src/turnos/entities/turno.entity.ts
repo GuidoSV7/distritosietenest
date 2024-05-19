@@ -2,9 +2,9 @@ import { Unidadeseducativa } from "../../unidadeseducativas/entities";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Tipocolegio {
-
-    @PrimaryGeneratedColumn()
+export class Turno {
+    
+@PrimaryGeneratedColumn()
     id: number;
 
     @Column('text',{
@@ -12,8 +12,6 @@ export class Tipocolegio {
     })
     nombre: string;
 
-    @OneToMany(() => Unidadeseducativa, unidadeducativa => unidadeducativa.idTipoColegio)
+    @OneToMany(() => Unidadeseducativa, unidadeducativa => unidadeducativa.idTurno)
     unidadeseducativas: Unidadeseducativa[];
-
-
 }
