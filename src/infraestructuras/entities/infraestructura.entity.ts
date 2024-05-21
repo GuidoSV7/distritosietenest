@@ -2,7 +2,7 @@
 import { Unidadeseducativa } from "../../unidadeseducativas/entities";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity('infraestructuras') 
 export class Infraestructura {
 
     @PrimaryGeneratedColumn()

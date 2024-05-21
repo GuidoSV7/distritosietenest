@@ -1,7 +1,7 @@
 import { Unidadeseducativa } from "../../unidadeseducativas/entities";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity('turnos')
 export class Turno {
     
 @PrimaryGeneratedColumn()

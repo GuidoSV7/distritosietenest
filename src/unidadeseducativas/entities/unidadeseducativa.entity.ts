@@ -4,12 +4,17 @@ import { Infraestructura } from '../../infraestructuras/entities/infraestructura
 import { Tipocolegio } from '../../tipocolegios/entities/tipocolegio.entity';
 import { Turno } from '../../turnos/entities/turno.entity';
 import { Gestione } from 'src/gestiones/entities/gestione.entity';
+import { Apoyossociale } from 'src/apoyossociales/entities/apoyossociale.entity';
+import { Apoyosgubernamentale } from 'src/apoyosgubernamentales/entities/apoyosgubernamentale.entity';
+
+import { Mantenimiento } from 'src/mantenimientos/entities/mantenimiento.entity';
+import { Desayuno } from 'src/desayunos/entities/desayuno.entity';
 
 @Entity({name: 'unidades_educativas'})
 export class Unidadeseducativa {
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column('text',{
         unique: true,    
@@ -72,10 +77,31 @@ export class Unidadeseducativa {
     @JoinColumn({ name: 'idTurno' })
     idTurno?: Turno | null; // Puede ser null
 
-    //Gestione
+    //Gestion
     @ManyToOne(() => Gestione,  { onDelete: 'SET NULL' , eager: true})
-    @JoinColumn({ name: 'idGestione' })
-    idGestione?: Gestione | null; // Puede ser null
+    @JoinColumn({ name: 'idGestion' })
+    idGestion?: Gestione | null; // Puede ser null
+
+
+    //APoyos Sociales
+    @OneToMany(() => Apoyossociale, (apoyossociales) => apoyossociales.unidadeducativa, { eager: true})
+    apoyosSociales: Apoyossociale[];
+
+    //Apoyos Gubernamentales
+    @OneToMany(() => Apoyosgubernamentale, (apoyosgubernamentales) => apoyosgubernamentales.unidadeducativa, { eager: true})
+    apoyosGubernamentales: Apoyosgubernamentale[];
+
+    //Desayunos
+    @OneToMany(() => Desayuno, (desayunos) => desayunos.unidadeducativa,{eager:true})
+    desayunos: Desayuno[]
+
+    //Mantenimientos
+    @OneToMany(()=> Mantenimiento, (mantenimientos) => mantenimientos.unidadeducativa, {eager:true})
+    mantenimientos: Mantenimiento[]
+
+
+      
+
 
     @BeforeInsert()
     checkSlugInsert() {

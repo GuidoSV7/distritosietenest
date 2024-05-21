@@ -5,6 +5,10 @@ import { InfraestructurasService } from 'src/infraestructuras/infraestructuras.s
 import { TipocolegiosService } from 'src/tipocolegios/tipocolegios.service';
 import { TurnosService } from 'src/turnos/turnos.service';
 import { GestionesService } from 'src/gestiones/gestiones.service';
+import { ApoyossocialesService } from 'src/apoyossociales/apoyossociales.service';
+import { ApoyosgubernamentalesService } from '../apoyosgubernamentales/apoyosgubernamentales.service';
+import { DesayunosService } from 'src/desayunos/desayunos.service';
+import { MantenimientosService } from 'src/mantenimientos/mantenimientos.service';
 
 @Injectable()
 export class SeedService {
@@ -15,7 +19,11 @@ export class SeedService {
     private readonly infraestructuraService: InfraestructurasService,
     private readonly tipocolegiosService: TipocolegiosService,
     private readonly turnosService: TurnosService,
-    private readonly gestioneService: GestionesService
+    private readonly gestioneService: GestionesService,
+    private readonly apoyossocialesService: ApoyossocialesService,
+    private readonly apoyosgubernamentalesService: ApoyosgubernamentalesService,
+    private readonly desayunosService: DesayunosService,
+    private readonly mantenimientosService: MantenimientosService
   ) {}
 
   async runSeed(){
@@ -24,6 +32,12 @@ export class SeedService {
     await this.insertNewTipoColegios();  
     await this.insertNewTurnos();
     await this.insertNewUnidadesEducativas();
+    await this.insertNewApoyosSociales();
+    await this.insertNewApoyosGubernamentales();
+    await this.insertNewDesayunos();
+    await this.insertNewMantenimientos();
+    
+
   
     
     return 'Seed Execute';
@@ -102,6 +116,74 @@ export class SeedService {
     return true;
 
   }
+
+  private async insertNewApoyosSociales(){
+
+    await this.apoyossocialesService.deleteAllApoyosociales;
+
+    const apoyossociales = initialData.apoyossociales;
+    const insertPromises = [];
+
+    apoyossociales.forEach(apoyossoaciale => {
+      insertPromises.push(this.apoyossocialesService.create(apoyossoaciale));
+    });
+
+    await Promise.all(insertPromises);
+
+    return true;
+
+  }
+
+  private async insertNewApoyosGubernamentales(){
+
+    await this.apoyosgubernamentalesService.deleteAllApoyosgubernamentales;
+
+    const apoyosgubernamentales = initialData.apoyosgubernamentales;
+    const insertPromises = [];
+
+    apoyosgubernamentales.forEach(apoyosgubernamentale => {
+      insertPromises.push(this.apoyosgubernamentalesService.create(apoyosgubernamentale));
+    });
+
+    await Promise.all(insertPromises);
+
+    return true;
+
+  }
+
+  private async insertNewDesayunos(){
+
+    await this.desayunosService.deleteAllDesayunos;
+
+    const desayunos = initialData.desayunos;
+    const insertPromises = [];
+
+    desayunos.forEach(desayuno => {
+      insertPromises.push(this.desayunosService.create(desayuno));
+    });
+
+    await Promise.all(insertPromises);
+
+    return true;
+
+  }
+
+  private async insertNewMantenimientos(){
+
+    await this.mantenimientosService.deleteAllMantenimientos;
+
+    const mantenimientos = initialData.mantenimientos;
+    const insertPromises = [];
+
+    mantenimientos.forEach(mantenimiento => {
+      insertPromises.push(this.mantenimientosService.create(mantenimiento));
+    });
+
+    await Promise.all(insertPromises);
+
+    return true;
+
+}
 
 
   

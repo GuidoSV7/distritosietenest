@@ -29,7 +29,7 @@ export class UnidadeseducativasService {
 
     try{
 
-      const {fotos = [], idInfraestructura, idTipoColegio, idTurno, idGestione, ...unidadeducativaDetails} = createUnidadeseducativaDto;
+      const {fotos = [], idInfraestructura, idTipoColegio, idTurno, idGestion, ...unidadeducativaDetails} = createUnidadeseducativaDto;
 
       const unidadeducativa = this.unidadeseducativaRepository.create({
         ...unidadeducativaDetails,
@@ -37,7 +37,7 @@ export class UnidadeseducativasService {
         idInfraestructura: { id: idInfraestructura },
         idTipoColegio: { id: idTipoColegio },
         idTurno: { id: idTurno },
-        idGestione: { id: idGestione }
+        idGestion: { id: idGestion }
       });
 
       return await this.unidadeseducativaRepository.save(unidadeducativa);
@@ -57,103 +57,100 @@ export class UnidadeseducativasService {
       take: limit,
       skip: offset,
       relations: {
-        fotos: true
+        fotos: true,
+
       }
     });
     
   }
 
-  async findOne(term: string) {
+  async findOne(id : number) {
 
     let unidadeducativa: Unidadeseducativa;
 
-    if(isUUID(term)){
-      unidadeducativa = await this.unidadeseducativaRepository.findOneBy({id:term});
-    }else{
-      const queryBuilder = this.unidadeseducativaRepository.createQueryBuilder();
+      const queryBuilder = this.unidadeseducativaRepository.createQueryBuilder("unidadeducativa");
       unidadeducativa = await queryBuilder
-        .where('nombre =:nombre or slug =:slug',{
-          nombre: term,
-          slug: term.toLowerCase(),
+      
+        .where('unidadeducativa.id =:id',{
+          id:id,
         })
-        .leftJoinAndSelect('Unidadeseducativa.fotos', 'fotos')
+        .leftJoinAndSelect("unidadeducativa.fotos", "fotos")
+        .leftJoinAndSelect("unidadeducativa.idInfraestructura", "Infraestructura")
+        .leftJoinAndSelect("unidadeducativa.idTurno", "Turno")
+        .leftJoinAndSelect("unidadeducativa.idGestion", "Gestione")       
+        .leftJoinAndSelect("unidadeducativa.apoyosSociales", "Apoyossociale")  
+        .leftJoinAndSelect("unidadeducativa.apoyosGubernamentales", "Apoyosgubernamentale") 
+        .leftJoinAndSelect("unidadeducativa.desayunos", "Desayuno") 
+        .leftJoinAndSelect("unidadeducativa.mantenimientos", "Mantenimiento") 
         .getOne();
-    }
 
     if(!unidadeducativa){
-      throw new NotFoundException( `Unidad Educativa con id ${term} no encontrada`);
+      throw new NotFoundException( `Unidad Educativa con id ${id} no encontrada`);
     }
 
     return unidadeducativa;
     
   }
 
-  async update(id: string, updateUnidadeseducativaDto: UpdateUnidadeseducativaDto) {
+  async update(id: number, updateUnidadeseducativaDto: UpdateUnidadeseducativaDto) {
 
     const { fotos, ...toUpdate } = updateUnidadeseducativaDto;
-
+  
     const unidadeducativa = await this.unidadeseducativaRepository.preload({
       id,
       ...toUpdate,
+      
       idInfraestructura: { id: updateUnidadeseducativaDto.idInfraestructura },
       idTipoColegio: { id: updateUnidadeseducativaDto.idTipoColegio },
       idTurno: { id: updateUnidadeseducativaDto.idTurno },
-      idGestione: { id: updateUnidadeseducativaDto.idGestione }
+      idGestion: { id: updateUnidadeseducativaDto.idGestion }
     });
-
+  
     if(!unidadeducativa){
       throw new NotFoundException(`Unidad Educativa con id ${id} no encontrada`);
     }
-
+  
     //Create Query Runner
     const queryRunner = this.dataSource.createQueryRunner();
     
     await queryRunner.connect();
-
+  
     await queryRunner.startTransaction();
-
+  
     try{
-
+  
       if(fotos){
         await queryRunner.manager.delete(UnidadEducativaFoto, {unidadeducativa: {id}});
         
         unidadeducativa.fotos = fotos.map(foto => this.unidadeseducativaFotoRepository.create({url: foto}));
-
       }
-
-
-
-
-
+  
       await queryRunner.manager.save(unidadeducativa);
-
+  
       await queryRunner.commitTransaction();
       await queryRunner.release();
-
-      // await this.unidadeseducativaRepository.save(unidadeducativa);
+  
       return this.findOnePlain(id);
-
+  
     } catch{
       
       await queryRunner.rollbackTransaction();
       await queryRunner.release();
-
+  
       throw new InternalServerErrorException('Error al actualizar los datos de la Unidad Educativa');
     }
-  
-    
   }
 
-  async findOnePlain( term: string ) {
-    const { fotos = [], ...rest } = await this.findOne( term );
+  async findOnePlain( id: number) {
+    const { fotos = [], ...rest } = await this.findOne( id );
     return {
       ...rest,
-      images: fotos.map( foto => foto.url )
+      fotos: fotos.map( foto => foto.url )
     }
   }
 
 
-  async remove(id: string) {
+  async remove(id: number) {
 
     const unidadeducativa = await this.findOne(id);
 

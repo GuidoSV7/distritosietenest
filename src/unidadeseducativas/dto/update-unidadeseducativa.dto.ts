@@ -56,7 +56,7 @@ export class UpdateUnidadeseducativaDto extends PartialType(CreateUnidadeseducat
 
     @IsNumber()
     @IsOptional()
-    idGestione?: number;
+    idGestion?: number;
 
 
 

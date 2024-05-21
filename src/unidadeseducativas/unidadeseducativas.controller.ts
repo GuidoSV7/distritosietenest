@@ -9,8 +9,8 @@ export class UnidadeseducativasController {
   constructor(private readonly unidadeseducativasService: UnidadeseducativasService) {}
 
   @Post()
-  create(@Body() createUnidadeseducativaDto: CreateUnidadeseducativaDto) {
-    return this.unidadeseducativasService.create(createUnidadeseducativaDto);
+  create(@Body() createUnidadEducativaDto: CreateUnidadeseducativaDto) {
+    return this.unidadeseducativasService.create(createUnidadEducativaDto);
   }
 
   @Get()
@@ -18,20 +18,20 @@ export class UnidadeseducativasController {
     return this.unidadeseducativasService.findAll(paginationDto);
   }
 
-  @Get(':term')
-  findOne(@Param('term') term: string) {
-    return this.unidadeseducativasService.findOne(term);
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.unidadeseducativasService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id', ParseUUIDPipe) id: string, 
-        @Body() updateUnidadeseducativaDto: UpdateUnidadeseducativaDto) 
+  update(@Param('id') id: number, 
+        @Body() updateUnidadEducativaDto: UpdateUnidadeseducativaDto) 
         {
-    return this.unidadeseducativasService.update(id, updateUnidadeseducativaDto);
+    return this.unidadeseducativasService.update(id, updateUnidadEducativaDto);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseUUIDPipe) id: string) {
+  remove(@Param('id') id: number) {
     return this.unidadeseducativasService.remove(id);
   }
 }

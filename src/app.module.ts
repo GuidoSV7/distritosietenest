@@ -12,6 +12,10 @@ import { InfraestructurasModule } from './infraestructuras/infraestructuras.modu
 import { TipocolegiosModule } from './tipocolegios/tipocolegios.module';
 import { TurnosModule } from './turnos/turnos.module';
 import { GestionesModule } from './gestiones/gestiones.module';
+import { ApoyossocialesModule } from './apoyossociales/apoyossociales.module';
+import { ApoyosgubernamentalesModule } from './apoyosgubernamentales/apoyosgubernamentales.module';
+import { DesayunosModule } from './desayunos/desayunos.module';
+import { MantenimientosModule } from './mantenimientos/mantenimientos.module';
 
 
 @Module({
@@ -49,7 +53,15 @@ import { GestionesModule } from './gestiones/gestiones.module';
 
     TurnosModule,
 
-    GestionesModule
+    GestionesModule,
+
+    ApoyossocialesModule,
+
+    ApoyosgubernamentalesModule,
+
+    DesayunosModule,
+
+    MantenimientosModule
 
 
   ],

@@ -6,10 +6,25 @@ import { InfraestructurasModule } from 'src/infraestructuras/infraestructuras.mo
 import { TipocolegiosModule } from 'src/tipocolegios/tipocolegios.module';
 import { TurnosModule } from 'src/turnos/turnos.module';
 import { GestionesModule } from 'src/gestiones/gestiones.module';
+import { ApoyossocialesModule } from 'src/apoyossociales/apoyossociales.module';
+import { ApoyosgubernamentalesModule } from 'src/apoyosgubernamentales/apoyosgubernamentales.module';
+import { DesayunosModule } from 'src/desayunos/desayunos.module';
+import { MantenimientosModule } from 'src/mantenimientos/mantenimientos.module';
 
 @Module({
   controllers: [SeedController],
   providers: [SeedService],
-  imports: [UnidadeseducativasModule, InfraestructurasModule, TipocolegiosModule, TurnosModule, GestionesModule],
+  imports: [
+    UnidadeseducativasModule, 
+    InfraestructurasModule, 
+    TipocolegiosModule, 
+    TurnosModule, 
+    GestionesModule, 
+    ApoyossocialesModule,
+    ApoyosgubernamentalesModule,
+    DesayunosModule,
+    MantenimientosModule
+  
+  ],
 })
 export class SeedModule {}

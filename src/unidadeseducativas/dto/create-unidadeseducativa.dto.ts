@@ -51,6 +51,6 @@ export class CreateUnidadeseducativaDto {
 
     @IsNumber()
     @IsOptional()
-    idGestione?: number | null;
+    idGestion?: number | null;
 
 }

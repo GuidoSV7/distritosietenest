@@ -8,7 +8,7 @@ interface SeedUnidadEducativa {
   idInfraestructura: number;
   idTipoColegio: number;
   idTurno: number;
-  idGestione: number;
+  idGestion: number;
 }
 
 interface SeedInfraestructura {
@@ -30,12 +30,47 @@ interface SeedGestione {
   juntaescolar: string;
 }
 
+interface SeedApoyossociales {
+  nombre: string;
+  cantidad: number;
+  nombreEntrega: string;
+  fecha: Date;
+  idUnidadEducativa: number;
+}
+
+interface SeedApoyosgubernamentales {
+  cantidad: number;
+  nombreEntrega: string;
+  fecha: Date;
+  idUnidadEducativa: number;
+}
+
+interface SeedDesayunos {
+  nombre: string;
+  cantidad: number;
+  nombreEntrega: string;
+  fecha: Date;
+  idUnidadEducativa: number;
+}
+
+interface SeedMantenimientos {
+  titulo: string;
+  fecha: Date;
+  encargado: string;
+  empresa: string;
+  idUnidadEducativa: number;
+}
+
 interface SeedData {
   unidadeseducativas: SeedUnidadEducativa[];
   infraestructuras: SeedInfraestructura[];
   tipocolegios: SeedTipoColegio[];
   turnos: SeedTurno[];
   gestiones: SeedGestione[];
+  apoyossociales: SeedApoyossociales[];
+  apoyosgubernamentales: SeedApoyosgubernamentales[];
+  desayunos: SeedDesayunos[];
+  mantenimientos: SeedMantenimientos[];
 }
 
 export const initialData: SeedData = {
@@ -126,7 +161,7 @@ export const initialData: SeedData = {
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 2,
-      idGestione: 1,
+      idGestion: 1,
     },
     {
       nombre: 'Unidad Educativa Nacional Ayacucho',
@@ -143,7 +178,7 @@ export const initialData: SeedData = {
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3,
-      idGestione: 2,
+      idGestion: 2,
     },
     {
       nombre: 'Unidad Educativa 20 de Junio - Noche',
@@ -160,7 +195,7 @@ export const initialData: SeedData = {
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3,
-      idGestione: 3,
+      idGestion: 3,
     },
     {
       nombre: 'Unidad Educativa Pampa de la Cruz - B',
@@ -177,7 +212,7 @@ export const initialData: SeedData = {
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3,
-      idGestione: 4,
+      idGestion: 4,
     },
     {
       nombre: 'Unidad educativa 20 de junio mañana',
@@ -185,7 +220,7 @@ export const initialData: SeedData = {
       coordenada_y: -17.8011059,
       direccion: 'No hay información',
       historia:
-        ' Fue fundada el 20 de junio de 1979 en los predios del centro educativo para dar inicio a la hora de construcción gestionado por los padres y madres de la familia a la cabeza de la señora petrona montaño. El 17 de abril de 1980 se consigue la ayuda del club de Leones para la construcción de tres aulas en dirección y baños al mismo tiempo se consiguen tres items para el funcionamiento del medio educativa con un curso de kinder y el ciclo básico completo, Los primeros docentes fueron los siguientes Mary tapia ,Carmen Lazo Y Laudencio Benavides los mismos que trabajan mañana y tarde para cubrir la falta de ítem y así se comienza a trabajar en casa de familia hasta esperar que termine la construcción Actualmente la directora del unidad educativa 20 de junio es la Lic. Vicky Betsabé Marín marca en el turno de la mañana junto a 13 docentes altamente calificados también cuenta con 1 personal administrativo y de 1 servicio En este momento cuenta con 450 estudiantes en los niveles de inicial en familia comunitaria y primaria comunitaria vocacional',
+        'Fue fundada el 20 de junio de 1979 en los predios del centro educativo para dar inicio a la hora de construcción gestionado por los padres y madres de la familia a la cabeza de la señora petrona montaño. El 17 de abril de 1980 se consigue la ayuda del club de Leones para la construcción de tres aulas en dirección y baños al mismo tiempo se consiguen tres items para el funcionamiento del medio educativa con un curso de kinder y el ciclo básico completo, Los primeros docentes fueron los siguientes Mary tapia ,Carmen Lazo Y Laudencio Benavides los mismos que trabajan mañana y tarde para cubrir la falta de ítem y así se comienza a trabajar en casa de familia hasta esperar que termine la construcción Actualmente la directora del unidad educativa 20 de junio es la Lic. Vicky Betsabé Marín marca en el turno de la mañana junto a 13 docentes altamente calificados también cuenta con 1 personal administrativo y de 1 servicio En este momento cuenta con 450 estudiantes en los niveles de inicial en familia comunitaria y primaria comunitaria vocacional',
       fotos: [
         'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
         'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
@@ -194,7 +229,179 @@ export const initialData: SeedData = {
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3,
-      idGestione: 5,
+      idGestion: 5,
+    },
+  ],
+
+  apoyossociales: [
+    {
+      nombre: 'Apoyo 1',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 1,
+    },
+    {
+      nombre: 'Apoyo 2',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-23'),
+      idUnidadEducativa: 1,
+    },
+    {
+      nombre: 'Apoyo 3',
+      cantidad: 502,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 2,
+    },
+
+    {
+      nombre: 'Apoyo 4',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 3,
+    },
+
+    {
+      nombre: 'Apoyo 5',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 4,
+    },
+
+    {
+      nombre: 'Apoyo 6',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 5,
+    },
+  ],
+
+  apoyosgubernamentales: [
+    {
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 1,
+    },
+    {
+      cantidad: 40,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-23'),
+      idUnidadEducativa: 1,
+    },
+    {
+      cantidad: 502,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 2,
+    },
+
+    {
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-26'),
+      idUnidadEducativa: 3,
+    },
+
+    {
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-23'),
+      idUnidadEducativa: 4,
+    },
+
+    {
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 5,
+    },
+  ],
+
+  desayunos: [
+    {
+      nombre: 'Muffins de Chocolate con Leche',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 1,
+    },
+    {
+      nombre: 'Sandwich de Pollo con Mayonesa',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-23'),
+      idUnidadEducativa: 1,
+    },
+    {
+      nombre: 'Yogurt Griego con Almendras',
+      cantidad: 502,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 2,
+    },
+
+    {
+      nombre: 'Arandanos con Pastel',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 3,
+    },
+
+    {
+      nombre: 'Muffins de Zanahoria',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 4,
+    },
+
+    {
+      nombre: 'lalalalalalal',
+      cantidad: 50,
+      nombreEntrega: 'Ronald Camino',
+      fecha: new Date('2022-07-22'),
+      idUnidadEducativa: 5,
+    },
+  ],
+
+  mantenimientos: [
+    {
+      titulo: 'Limpieza de aulas',
+      fecha: new Date('2022-07-22'),
+      encargado: 'Alejandro Pumari',
+      empresa: 'Los Pumas SL',
+      idUnidadEducativa: 1,
+    },
+
+    {
+      titulo: 'Desinfectar UE',
+      fecha: new Date('2022-07-22'),
+      encargado: 'Alejandro Pumari',
+      empresa: 'Los Pumas SL',
+      idUnidadEducativa: 1,
+    },
+
+    {
+      titulo: 'Cuidado del Parque',
+      fecha: new Date('2022-07-22'),
+      encargado: 'Alejandro Pumari',
+      empresa: 'Los Pumas SL',
+      idUnidadEducativa: 2,
+    },
+
+    {
+      titulo: 'Limpieza de baños',
+      fecha: new Date('2022-07-22'),
+      encargado: 'Alejandro Pumari',
+      empresa: 'Los Pumas SL',
+      idUnidadEducativa: 3,
     },
   ],
 };

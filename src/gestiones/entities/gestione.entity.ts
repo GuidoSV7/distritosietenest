@@ -1,7 +1,7 @@
-import { Unidadeseducativa } from "src/unidadeseducativas/entities";
+import { Unidadeseducativa } from "../../unidadeseducativas/entities";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity('gestiones')
 export class Gestione {
     
     @PrimaryGeneratedColumn()
@@ -32,7 +32,7 @@ export class Gestione {
     
 
 
-    @OneToMany(() => Unidadeseducativa, unidadeducativa => unidadeducativa.idGestione)
+    @OneToMany(() => Unidadeseducativa, unidadeducativa => unidadeducativa.idGestion)
     unidadeseducativas: Unidadeseducativa[];
 
 }

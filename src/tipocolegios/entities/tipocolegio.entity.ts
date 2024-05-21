@@ -1,7 +1,7 @@
 import { Unidadeseducativa } from "../../unidadeseducativas/entities";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity('tipocolegios')
 export class Tipocolegio {
 
     @PrimaryGeneratedColumn()
