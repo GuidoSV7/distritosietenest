@@ -1,9 +1,5 @@
-import { PartialType } from '@nestjs/mapped-types';
+//import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { CreateTurnoDto } from './create-turno.dto';
-import { IsString, MinLength } from 'class-validator';
 
-export class UpdateTurnoDto extends PartialType(CreateTurnoDto) {
-    @IsString()
-    @MinLength(1)
-    nombre: string;
-}
+export class UpdateTurnoDto extends PartialType(CreateTurnoDto) {}

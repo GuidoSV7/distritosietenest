@@ -3,12 +3,18 @@ import { TurnosService } from './turnos.service';
 import { CreateTurnoDto } from './dto/create-turno.dto';
 import { UpdateTurnoDto } from './dto/update-turno.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Turno } from './entities/turno.entity';
+
+@ApiTags('Turnos')
 
 @Controller('turnos')
 export class TurnosController {
   constructor(private readonly turnosService: TurnosService) {}
 
   @Post()
+  @ApiResponse({status:201, description:'Turno Creado exitosamente', type: Turno})
+  @ApiResponse({status:400, description:'Bad Request'})
   create(@Body() createTurnoDto: CreateTurnoDto) {
     return this.turnosService.create(createTurnoDto);
   }

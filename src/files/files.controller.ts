@@ -1,6 +1,9 @@
 import { Controller, Post, UploadedFiles, UseInterceptors, BadRequestException } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { ApiTags } from '@nestjs/swagger';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+
+@ApiTags('Archivos')
 
 @Controller('files')
 export class FilesController {

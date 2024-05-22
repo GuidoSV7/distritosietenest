@@ -3,12 +3,18 @@ import { MantenimientosService } from './mantenimientos.service';
 import { CreateMantenimientoDto } from './dto/create-mantenimiento.dto';
 import { UpdateMantenimientoDto } from './dto/update-mantenimiento.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Mantenimiento } from './entities/mantenimiento.entity';
+
+@ApiTags('Mantenimientos')
 
 @Controller('mantenimientos')
 export class MantenimientosController {
   constructor(private readonly mantenimientosService: MantenimientosService) {}
 
   @Post()
+  @ApiResponse({status:201, description:'Mantenimiento Creado exitosamente', type: Mantenimiento})
+  @ApiResponse({status:400, description:'Bad Request'})
   create(@Body() createMantenimientoDto: CreateMantenimientoDto) {
     return this.mantenimientosService.create(createMantenimientoDto);
   }

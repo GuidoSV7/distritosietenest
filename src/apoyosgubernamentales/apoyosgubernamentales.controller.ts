@@ -3,6 +3,10 @@ import { ApoyosgubernamentalesService } from './apoyosgubernamentales.service';
 import { CreateApoyosgubernamentaleDto } from './dto/create-apoyosgubernamentale.dto';
 import { UpdateApoyosgubernamentaleDto } from './dto/update-apoyosgubernamentale.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Apoyosgubernamentale } from './entities/apoyosgubernamentale.entity';
+
+@ApiTags('Apoyos Gubernamentales')
 
 @Controller('apoyosgubernamentales')
 export class ApoyosgubernamentalesController {
@@ -11,6 +15,8 @@ export class ApoyosgubernamentalesController {
  
 
   @Post()
+  @ApiResponse({status:201, description:'Apoyo Gubernamental Creado exitosamente', type: Apoyosgubernamentale})
+  @ApiResponse({status:400, description:'Bad Request'})
   create(@Body() createApoyosgubernamentaleDto: CreateApoyosgubernamentaleDto) {
     return this.apoyosgubernamentalesService.create(createApoyosgubernamentaleDto);
   }

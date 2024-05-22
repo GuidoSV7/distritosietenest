@@ -1,13 +1,6 @@
-import { PartialType } from '@nestjs/mapped-types';
+//import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { CreateInfraestructuraDto } from './create-infraestructura.dto';
-import { IsString, MinLength } from 'class-validator';
 
-export class UpdateInfraestructuraDto extends PartialType(CreateInfraestructuraDto) {
 
-    
-    
-    @IsString()
-    @MinLength(1)
-    nombre: string;
-
-}
+export class UpdateInfraestructuraDto extends PartialType(CreateInfraestructuraDto) {}

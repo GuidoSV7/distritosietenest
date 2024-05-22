@@ -3,12 +3,18 @@ import { GestionesService } from './gestiones.service';
 import { CreateGestioneDto } from './dto/create-gestione.dto';
 import { UpdateGestioneDto } from './dto/update-gestione.dto';
 import { PaginationDto } from '../common/dtos/pagination.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Gestione } from './entities/gestione.entity';
+
+@ApiTags('Gestiones')
 
 @Controller('gestiones')
 export class GestionesController {
   constructor(private readonly gestionesService: GestionesService) {}
 
   @Post()
+  @ApiResponse({status:201, description:'Gestion Creada exitosamente', type: Gestione})
+  @ApiResponse({status:400, description:'Bad Request'})
   create(@Body() createGestioneDto: CreateGestioneDto) {
     return this.gestionesService.create(createGestioneDto);
   }

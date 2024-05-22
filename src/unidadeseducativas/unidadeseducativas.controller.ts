@@ -3,12 +3,19 @@ import { UnidadeseducativasService } from './unidadeseducativas.service';
 import { CreateUnidadeseducativaDto } from './dto/create-unidadeseducativa.dto';
 import { UpdateUnidadeseducativaDto } from './dto/update-unidadeseducativa.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Unidadeseducativa } from './entities';
 
+@ApiTags('Unidades Educativas')
 @Controller('unidadeseducativas')
 export class UnidadeseducativasController {
   constructor(private readonly unidadeseducativasService: UnidadeseducativasService) {}
 
+
   @Post()
+  @ApiResponse({status:201, description:'Unidad Educativa Creada exitosamente', type: Unidadeseducativa})
+  @ApiResponse({status:400, description:'Bad Request'})
+
   create(@Body() createUnidadEducativaDto: CreateUnidadeseducativaDto) {
     return this.unidadeseducativasService.create(createUnidadEducativaDto);
   }
