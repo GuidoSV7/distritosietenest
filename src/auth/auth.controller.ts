@@ -10,7 +10,7 @@ import { CreateUserDto, LoginUserDto } from './dto';
 import { User } from './entities/user.entity';
 import { UserRoleGuard } from './guards/user-role.guard';
 import { ValidRoles } from './interfaces';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiExcludeEndpoint, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Auth')
 
@@ -21,15 +21,20 @@ export class AuthController {
 
 
   @Post('register')
+  @ApiResponse({status:201, description:'Usuario Registrado Correctamente', type: User})
+  @ApiResponse({status:400, description:'Bad Request'})
   createUser(@Body() createUserDto: CreateUserDto ) {
     return this.authService.create( createUserDto );
   }
 
   @Post('login')
+  @ApiResponse({status:201, description:'Usuario Logueado exitosamente', type: User})
+  @ApiResponse({status:400, description:'Bad Request'})
   loginUser(@Body() loginUserDto: LoginUserDto ) {
     return this.authService.login( loginUserDto );
   }
 
+  @ApiExcludeEndpoint()
   @Get('check-status')
   @Auth()
   checkAuthStatus(
@@ -38,7 +43,7 @@ export class AuthController {
     return this.authService.checkAuthStatus( user );
   }
 
-
+  @ApiExcludeEndpoint()
   @Get('private')
   @UseGuards( AuthGuard() )
   testingPrivateRoute(
@@ -64,6 +69,7 @@ export class AuthController {
 
   // @SetMetadata('roles', ['admin','super-user'])
 
+  @ApiExcludeEndpoint()
   @Get('private2')
   @RoleProtected( ValidRoles.superUser, ValidRoles.admin )
   @UseGuards( AuthGuard(), UserRoleGuard )
@@ -78,6 +84,7 @@ export class AuthController {
   }
 
 
+  @ApiExcludeEndpoint()
   @Get('private3')
   @Auth( ValidRoles.admin )
   privateRoute3(

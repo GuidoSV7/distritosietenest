@@ -11,6 +11,7 @@ import { ApoyosgubernamentalesModule } from 'src/apoyosgubernamentales/apoyosgub
 import { DesayunosModule } from 'src/desayunos/desayunos.module';
 import { MantenimientosModule } from 'src/mantenimientos/mantenimientos.module';
 import { AuthModule } from 'src/auth/auth.module';
+import { CategoriasModule } from 'src/categorias/categorias.module';
 
 @Module({
   controllers: [SeedController],
@@ -25,6 +26,7 @@ import { AuthModule } from 'src/auth/auth.module';
     ApoyosgubernamentalesModule,
     DesayunosModule,
     MantenimientosModule,
+    CategoriasModule,
 
 
 

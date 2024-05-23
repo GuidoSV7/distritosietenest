@@ -15,7 +15,7 @@ export class UnidadeseducativasController {
 
 
   @Post()
-  @Auth(ValidRoles.admin)
+  // @Auth(ValidRoles.admin)
   @ApiResponse({status:201, description:'Unidad Educativa Creada exitosamente', type: Unidadeseducativa})
   @ApiResponse({status:400, description:'Bad Request'})
   create(@Body() createUnidadEducativaDto: CreateUnidadeseducativaDto) {
@@ -33,7 +33,7 @@ export class UnidadeseducativasController {
     return this.unidadeseducativasService.findOne(id);
   }
 
-  @Auth(ValidRoles.admin)
+  // @Auth(ValidRoles.admin)
   @Patch(':id')
   update(@Param('id') id: number, 
         @Body() updateUnidadEducativaDto: UpdateUnidadeseducativaDto) 
@@ -41,7 +41,7 @@ export class UnidadeseducativasController {
     return this.unidadeseducativasService.update(id, updateUnidadEducativaDto);
   }
   
-  @Auth(ValidRoles.admin)
+  // @Auth(ValidRoles.admin)
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.unidadeseducativasService.remove(id);

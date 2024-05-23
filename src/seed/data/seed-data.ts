@@ -12,12 +12,11 @@ interface SeedUnidadEducativa {
   idGestion: number;
 }
 
-interface SeedUser{
+interface SeedUser {
   email: string;
-  name: string,
+  name: string;
   password: string;
   roles: string[];
-
 }
 
 interface SeedInfraestructura {
@@ -25,6 +24,10 @@ interface SeedInfraestructura {
 }
 
 interface SeedTipoColegio {
+  nombre: string;
+}
+
+interface SeedCategoria {
   nombre: string;
 }
 
@@ -52,6 +55,7 @@ interface SeedApoyosgubernamentales {
   nombreEntrega: string;
   fecha: Date;
   idUnidadEducativa: number;
+  idCategoria: number;
 }
 
 interface SeedDesayunos {
@@ -82,36 +86,50 @@ interface SeedData {
   apoyosgubernamentales: SeedApoyosgubernamentales[];
   desayunos: SeedDesayunos[];
   mantenimientos: SeedMantenimientos[];
+  categorias: SeedCategoria[];
 }
 
 export const initialData: SeedData = {
-  users:[
+  users: [
     {
       email: 'distritosiete@gmail.com',
       name: 'Distrito Siete Super User',
       password: bcrypt.hashSync('123456', 10),
-      roles: ['user','super-user']
+      roles: ['user', 'super-user'],
     },
 
     {
       email: 'Admin@gmail.com',
       name: 'Distrito Siete Admin',
       password: bcrypt.hashSync('123456', 10),
-      roles: ['admin']
+      roles: ['admin'],
     },
     {
       email: 'test1@gmail.com',
       name: 'User 1',
       password: bcrypt.hashSync('123456', 10),
-      roles: ['user']
+      roles: ['user'],
     },
     {
       email: 'test2@gmail.com',
       name: 'User 2',
       password: bcrypt.hashSync('123456', 10),
-      roles: ['user']
+      roles: ['user'],
+    },
+  ],
+
+  categorias: [
+    {
+      nombre: 'Camaras',
     },
 
+    {
+      nombre: 'Sillas',
+    },
+
+    {
+      nombre: 'Mesas',
+    },
   ],
 
   gestiones: [
@@ -327,18 +345,21 @@ export const initialData: SeedData = {
       nombreEntrega: 'Ronald Camino',
       fecha: new Date('2022-07-22'),
       idUnidadEducativa: 1,
+      idCategoria: 1,
     },
     {
       cantidad: 40,
       nombreEntrega: 'Ronald Camino',
       fecha: new Date('2022-07-23'),
       idUnidadEducativa: 1,
+      idCategoria: 2,
     },
     {
       cantidad: 502,
       nombreEntrega: 'Ronald Camino',
       fecha: new Date('2022-07-22'),
       idUnidadEducativa: 2,
+      idCategoria: 3,
     },
 
     {
@@ -346,6 +367,7 @@ export const initialData: SeedData = {
       nombreEntrega: 'Ronald Camino',
       fecha: new Date('2022-07-26'),
       idUnidadEducativa: 3,
+      idCategoria: 1,
     },
 
     {
@@ -353,6 +375,7 @@ export const initialData: SeedData = {
       nombreEntrega: 'Ronald Camino',
       fecha: new Date('2022-07-23'),
       idUnidadEducativa: 4,
+      idCategoria: 2,
     },
 
     {
@@ -360,6 +383,7 @@ export const initialData: SeedData = {
       nombreEntrega: 'Ronald Camino',
       fecha: new Date('2022-07-22'),
       idUnidadEducativa: 5,
+      idCategoria: 3,
     },
   ],
 

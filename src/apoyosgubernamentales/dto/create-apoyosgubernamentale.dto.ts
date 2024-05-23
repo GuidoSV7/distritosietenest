@@ -31,4 +31,13 @@ export class CreateApoyosgubernamentaleDto {
     })
     @IsNumber()
     idUnidadEducativa: number;
+
+    @ApiProperty({
+        description: 'ID de la Categoria a la que pertenece el apoyo gubernamental',
+        nullable: false
+    })
+
+    @IsNumber()
+    idCategoria: number;
+
 }

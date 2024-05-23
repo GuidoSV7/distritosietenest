@@ -12,6 +12,7 @@ import { MantenimientosService } from 'src/mantenimientos/mantenimientos.service
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/auth/entities/user.entity';
 import { Repository } from 'typeorm';
+import { CategoriasService } from 'src/categorias/categorias.service';
 
 @Injectable()
 export class SeedService {
@@ -27,6 +28,7 @@ export class SeedService {
     private readonly apoyosgubernamentalesService: ApoyosgubernamentalesService,
     private readonly desayunosService: DesayunosService,
     private readonly mantenimientosService: MantenimientosService,
+    private readonly categoriasService: CategoriasService,
   
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
@@ -37,6 +39,7 @@ export class SeedService {
     await this.insertUsers();
 
 
+    await this.insertNewCategorias();
     await this.insertNewGestiones();
     await this.insertNewInfraestructuras();
     await this.insertNewTipoColegios();  
@@ -106,6 +109,21 @@ export class SeedService {
       
   }
 
+
+  private async insertNewCategorias(){
+    await this.categoriasService.deleteAllCategorias;
+
+    const categorias = initialData.categorias;
+    const insertPromises = [];
+
+    categorias.forEach(turno => {
+      insertPromises.push(this.categoriasService.create(turno));
+    });
+
+    await Promise.all(insertPromises);
+
+    return true;
+  }
 
   private async insertNewTurnos(){
     await this.turnosService.deleteAllTurnos;

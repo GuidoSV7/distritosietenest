@@ -16,6 +16,7 @@ import { ApoyossocialesModule } from './apoyossociales/apoyossociales.module';
 import { ApoyosgubernamentalesModule } from './apoyosgubernamentales/apoyosgubernamentales.module';
 import { DesayunosModule } from './desayunos/desayunos.module';
 import { MantenimientosModule } from './mantenimientos/mantenimientos.module';
+import { CategoriasModule } from './categorias/categorias.module';
 
 
 @Module({
@@ -61,7 +62,9 @@ import { MantenimientosModule } from './mantenimientos/mantenimientos.module';
 
     DesayunosModule,
 
-    MantenimientosModule
+    MantenimientosModule,
+
+    CategoriasModule
 
 
   ],

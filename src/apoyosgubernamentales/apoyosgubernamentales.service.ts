@@ -25,10 +25,11 @@ export class ApoyosgubernamentalesService {
 
   async create(createApoyosgubernamentaleDto: CreateApoyosgubernamentaleDto) {
     try {
-      const {idUnidadEducativa, ...ApoyosocialeDetails} = createApoyosgubernamentaleDto;
+      const {idUnidadEducativa,idCategoria, ...ApoyosocialeDetails} = createApoyosgubernamentaleDto;
       const apoyosociale = this.apoyogubernamentaleRepository.create({
         ...ApoyosocialeDetails,
-        unidadeducativa: { id: idUnidadEducativa }
+        unidadeducativa: { id: idUnidadEducativa },
+        categoria: idCategoria ? { id: idCategoria } : null
       });
 
       return await this.apoyogubernamentaleRepository.save(apoyosociale);

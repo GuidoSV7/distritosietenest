@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Categoria } from "src/categorias/entities/categoria.entity";
 import { Unidadeseducativa } from "src/unidadeseducativas/entities";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -39,7 +40,13 @@ export class Apoyosgubernamentale {
       })
       fecha: Date;
 
-      @ManyToOne(() => Unidadeseducativa, (unidadeducativa) => unidadeducativa.apoyosGubernamentales,{onDelete: 'CASCADE'})
-      @JoinColumn({ name: 'idUnidadEducativa' }) // Aquí está el cambio
-      unidadeducativa: Unidadeseducativa;
+    @ManyToOne(() => Unidadeseducativa, (unidadeducativa) => unidadeducativa.apoyosGubernamentales,{onDelete: 'CASCADE'})
+    @JoinColumn({ name: 'idUnidadEducativa' }) // Aquí está el cambio
+    unidadeducativa: Unidadeseducativa;
+
+    //Categoria
+    @ManyToOne(() => Categoria, (categoria) => categoria.apoyosGubernamentales, { onDelete: 'SET NULL' , eager: true , nullable: true })
+    @JoinColumn({ name: 'idCategoria' }) // Aquí está el cambio
+    categoria: Categoria;
+   
 }
