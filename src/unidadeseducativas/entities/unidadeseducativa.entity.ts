@@ -163,9 +163,9 @@ export class Unidadeseducativa {
 
     })
     //Gestion
-    @ManyToOne(() => Gestione,  { onDelete: 'SET NULL' , eager: true})
+    @ManyToOne(() => Gestione,  { onDelete: 'SET NULL' , eager: true , nullable: true})
     @JoinColumn({ name: 'idGestion' })
-    idGestion?: Gestione | null; // Puede ser null
+    idGestion?: Gestione | null; 
 
     @ApiProperty({
       type: () => Apoyossociale,

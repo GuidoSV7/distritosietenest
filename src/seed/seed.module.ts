@@ -10,6 +10,7 @@ import { ApoyossocialesModule } from 'src/apoyossociales/apoyossociales.module';
 import { ApoyosgubernamentalesModule } from 'src/apoyosgubernamentales/apoyosgubernamentales.module';
 import { DesayunosModule } from 'src/desayunos/desayunos.module';
 import { MantenimientosModule } from 'src/mantenimientos/mantenimientos.module';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   controllers: [SeedController],
@@ -23,7 +24,11 @@ import { MantenimientosModule } from 'src/mantenimientos/mantenimientos.module';
     ApoyossocialesModule,
     ApoyosgubernamentalesModule,
     DesayunosModule,
-    MantenimientosModule
+    MantenimientosModule,
+
+
+
+    AuthModule
   
   ],
 })

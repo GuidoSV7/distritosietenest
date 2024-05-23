@@ -37,7 +37,7 @@ export class UnidadeseducativasService {
         idInfraestructura: { id: idInfraestructura },
         idTipoColegio: { id: idTipoColegio },
         idTurno: { id: idTurno },
-        idGestion: { id: idGestion }
+        idGestion: idGestion ? { id: idGestion } : null
       });
 
       return await this.unidadeseducativaRepository.save(unidadeducativa);

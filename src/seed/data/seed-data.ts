@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcrypt';
 interface SeedUnidadEducativa {
   nombre: string;
   coordenada_x: number;
@@ -9,6 +10,14 @@ interface SeedUnidadEducativa {
   idTipoColegio: number;
   idTurno: number;
   idGestion: number;
+}
+
+interface SeedUser{
+  email: string;
+  name: string,
+  password: string;
+  roles: string[];
+
 }
 
 interface SeedInfraestructura {
@@ -62,6 +71,8 @@ interface SeedMantenimientos {
 }
 
 interface SeedData {
+  users: SeedUser[];
+
   unidadeseducativas: SeedUnidadEducativa[];
   infraestructuras: SeedInfraestructura[];
   tipocolegios: SeedTipoColegio[];
@@ -74,6 +85,35 @@ interface SeedData {
 }
 
 export const initialData: SeedData = {
+  users:[
+    {
+      email: 'distritosiete@gmail.com',
+      name: 'Distrito Siete Super User',
+      password: bcrypt.hashSync('123456', 10),
+      roles: ['user','super-user']
+    },
+
+    {
+      email: 'Admin@gmail.com',
+      name: 'Distrito Siete Admin',
+      password: bcrypt.hashSync('123456', 10),
+      roles: ['admin']
+    },
+    {
+      email: 'test1@gmail.com',
+      name: 'User 1',
+      password: bcrypt.hashSync('123456', 10),
+      roles: ['user']
+    },
+    {
+      email: 'test2@gmail.com',
+      name: 'User 2',
+      password: bcrypt.hashSync('123456', 10),
+      roles: ['user']
+    },
+
+  ],
+
   gestiones: [
     {
       numero: 467456,

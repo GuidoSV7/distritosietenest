@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Delete } from '@nestjs/common';
 import { UnidadeseducativasService } from './../unidadeseducativas/unidadeseducativas.service';
 import { initialData } from './data/seed-data';
 import { InfraestructurasService } from 'src/infraestructuras/infraestructuras.service';
@@ -9,6 +9,9 @@ import { ApoyossocialesService } from 'src/apoyossociales/apoyossociales.service
 import { ApoyosgubernamentalesService } from '../apoyosgubernamentales/apoyosgubernamentales.service';
 import { DesayunosService } from 'src/desayunos/desayunos.service';
 import { MantenimientosService } from 'src/mantenimientos/mantenimientos.service';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/auth/entities/user.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class SeedService {
@@ -23,10 +26,17 @@ export class SeedService {
     private readonly apoyossocialesService: ApoyossocialesService,
     private readonly apoyosgubernamentalesService: ApoyosgubernamentalesService,
     private readonly desayunosService: DesayunosService,
-    private readonly mantenimientosService: MantenimientosService
+    private readonly mantenimientosService: MantenimientosService,
+  
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
   ) {}
 
   async runSeed(){
+    await this.deleteTables();
+    await this.insertUsers();
+
+
     await this.insertNewGestiones();
     await this.insertNewInfraestructuras();
     await this.insertNewTipoColegios();  
@@ -44,6 +54,39 @@ export class SeedService {
 
   }
 
+  private async deleteTables(){
+    await this.infraestructuraService.deleteAllInfraestructuras();
+    await this.tipocolegiosService.deleteAllTipocolegios();
+    await this.turnosService.deleteAllTurnos();
+    await this.gestioneService.deleteAllGestiones();
+    await this.apoyossocialesService.deleteAllApoyosociales;
+    await this.apoyosgubernamentalesService.deleteAllApoyosgubernamentales;
+    await this.desayunosService.deleteAllDesayunos;
+    await this.mantenimientosService.deleteAllMantenimientos;
+    await this.unidadeducativaService.deleteAllUnidadesEducativas();
+  
+    const queryBuilder = this.userRepository.createQueryBuilder();
+    await queryBuilder
+      .delete()
+      .where({})
+      .execute(); 
+      
+  }
+
+  private async insertUsers() {
+
+    const seedUsers = initialData.users;
+    
+    const users: User[] = [];
+
+    seedUsers.forEach( user => {
+      users.push( this.userRepository.create( user ) )
+    });
+
+    const dbUsers = await this.userRepository.save( seedUsers )
+
+    return dbUsers[0];
+  }
   private async insertNewGestiones(){
 
     await this.gestioneService.deleteAllGestiones();
