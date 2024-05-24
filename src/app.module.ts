@@ -45,6 +45,8 @@ import { CategoriasModule } from './categorias/categorias.module';
       synchronize: true,
     }),
 
+    
+
     UnidadeseducativasModule,
 
     CommonModule,
