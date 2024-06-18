@@ -13,6 +13,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/auth/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CategoriasService } from 'src/categorias/categorias.service';
+import { EspecialidadesService } from 'src/especialidades/especialidades.service';
 
 @Injectable()
 export class SeedService {
@@ -29,6 +30,7 @@ export class SeedService {
     private readonly desayunosService: DesayunosService,
     private readonly mantenimientosService: MantenimientosService,
     private readonly categoriasService: CategoriasService,
+    private readonly especialidadesService: EspecialidadesService,
   
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
@@ -38,7 +40,7 @@ export class SeedService {
     await this.deleteTables();
     await this.insertUsers();
 
-
+    await this.insertNewEspecialidades();
     await this.insertNewCategorias();
     await this.insertNewGestiones();
     await this.insertNewInfraestructuras();
@@ -58,6 +60,8 @@ export class SeedService {
   }
 
   private async deleteTables(){
+    
+    await this.especialidadesService.deleteAllEspecialidades();
     await this.infraestructuraService.deleteAllInfraestructuras();
     await this.tipocolegiosService.deleteAllTipocolegios();
     await this.turnosService.deleteAllTurnos();
@@ -90,6 +94,28 @@ export class SeedService {
 
     return dbUsers[0];
   }
+
+
+  private async insertNewEspecialidades(){
+
+    await this.especialidadesService.deleteAllEspecialidades();
+
+    const especialidades = initialData.especialidades;
+    const insertPromises = [];
+
+    especialidades.forEach(especialidade => {
+      insertPromises.push(this.especialidadesService.create(especialidade));
+    });
+
+    await Promise.all(insertPromises);
+
+    return true;
+
+
+      
+  }
+  
+
   private async insertNewGestiones(){
 
     await this.gestioneService.deleteAllGestiones();

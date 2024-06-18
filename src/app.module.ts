@@ -17,6 +17,8 @@ import { ApoyosgubernamentalesModule } from './apoyosgubernamentales/apoyosguber
 import { DesayunosModule } from './desayunos/desayunos.module';
 import { MantenimientosModule } from './mantenimientos/mantenimientos.module';
 import { CategoriasModule } from './categorias/categorias.module';
+import { CentrossaludsModule } from './centrossaluds/centrossaluds.module';
+import { EspecialidadesModule } from './especialidades/especialidades.module';
 
 
 @Module({
@@ -44,7 +46,6 @@ import { CategoriasModule } from './categorias/categorias.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-
     
 
     UnidadeseducativasModule,
@@ -73,7 +74,11 @@ import { CategoriasModule } from './categorias/categorias.module';
 
     MantenimientosModule,
 
-    CategoriasModule
+    CategoriasModule,
+
+    CentrossaludsModule,
+
+    EspecialidadesModule
 
 
   ],

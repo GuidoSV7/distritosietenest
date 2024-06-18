@@ -19,6 +19,10 @@ interface SeedUser {
   roles: string[];
 }
 
+interface SeedEspecialidad {
+  nombre: string;
+
+}
 interface SeedInfraestructura {
   nombre: string;
 }
@@ -87,6 +91,8 @@ interface SeedData {
   desayunos: SeedDesayunos[];
   mantenimientos: SeedMantenimientos[];
   categorias: SeedCategoria[];
+  especialidades: SeedEspecialidad[];
+  
 }
 
 export const initialData: SeedData = {
@@ -468,4 +474,15 @@ export const initialData: SeedData = {
       idUnidadEducativa: 3,
     },
   ],
+
+  especialidades:[
+    {
+      nombre: 'Oftalmologia'
+    },
+    {
+      nombre: 'Neurologia'
+      
+    },
+
+  ]
 };

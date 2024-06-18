@@ -12,6 +12,7 @@ import { DesayunosModule } from 'src/desayunos/desayunos.module';
 import { MantenimientosModule } from 'src/mantenimientos/mantenimientos.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { CategoriasModule } from 'src/categorias/categorias.module';
+import { EspecialidadesModule } from 'src/especialidades/especialidades.module';
 
 @Module({
   controllers: [SeedController],
@@ -27,6 +28,7 @@ import { CategoriasModule } from 'src/categorias/categorias.module';
     DesayunosModule,
     MantenimientosModule,
     CategoriasModule,
+    EspecialidadesModule,
 
 
 
