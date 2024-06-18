@@ -19,6 +19,7 @@ import { MantenimientosModule } from './mantenimientos/mantenimientos.module';
 import { CategoriasModule } from './categorias/categorias.module';
 import { CentrossaludsModule } from './centrossaluds/centrossaluds.module';
 import { EspecialidadesModule } from './especialidades/especialidades.module';
+import { TelegramModule } from './telegram/telegram.module';
 
 
 @Module({
@@ -78,7 +79,9 @@ import { EspecialidadesModule } from './especialidades/especialidades.module';
 
     CentrossaludsModule,
 
-    EspecialidadesModule
+    EspecialidadesModule,
+
+    TelegramModule
 
 
   ],
