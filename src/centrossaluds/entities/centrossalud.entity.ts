@@ -94,7 +94,7 @@ export class CentrosSaluds {
       })
     // En CentrosSaluds
     @OneToMany(() => CentrosSaludsEspecialidades,
-     (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.centrosSaluds, { eager: true })
+     (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.centroSalud, { eager: true })
     especialidades?: CentrosSaludsEspecialidades[];
     
   

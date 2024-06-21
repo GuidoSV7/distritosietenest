@@ -2,11 +2,12 @@ import { Injectable, InternalServerErrorException, Logger, NotFoundException } f
 import { CreateCentrossaludDto } from './dto/create-centrossalud.dto';
 import { UpdateCentrossaludDto } from './dto/update-centrossalud.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CentrosSaluds } from './entities/centrossaludentity';
+import { CentrosSaluds } from './entities/centrossalud.entity';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { CentrosSaludFoto } from './entities/centrossalud-foto.entity';
 import { CentrosSaludsEspecialidades } from './entities/centrossalud-has-especialidad.entity';
+import { Especialidade } from 'src/especialidades/entities/especialidade.entity';
 
 @Injectable()
 export class CentrossaludsService {
@@ -23,8 +24,13 @@ export class CentrossaludsService {
     @InjectRepository(CentrosSaludFoto)
     private readonly centrossaludFotoRepository: Repository<CentrosSaludFoto>,
 
+    @InjectRepository(Especialidade)
+    private readonly especialidadeRepository: Repository<Especialidade>,
+
     @InjectRepository(CentrosSaludsEspecialidades)
     private readonly centrossaludEspecialidadesRepository: Repository<CentrosSaludsEspecialidades>,
+
+
 
     private readonly dataSource: DataSource,
   ){}
@@ -34,17 +40,12 @@ export class CentrossaludsService {
     try {
       const {fotos = [], especialidades = [] ,...CentrossaludDetails} = createCentrossaludDto;
       
-      // const centrossalud = this.centrossaludRepository.create({
-      //   ...CentrossaludDetails,
-      //   fotos: fotos.map(foto => this.centrossaludFotoRepository.create({url: foto})),
-      //   especialidades: especialidades.map(especialidades => this.centrossaludEspecialidadesRepository.create(
-      //     { centrosSaluds : centrossalud.id as CentrosSaluds,
-      //       especialidade: especialidades
-      //     }
-      //   ))
-      // });
+      const centrossalud = this.centrossaludRepository.create({
+        ...CentrossaludDetails,
+        fotos: fotos.map(foto => this.centrossaludFotoRepository.create({url: foto})),
+      });
 
-      // return await this.centrossaludRepository.save(centrossalud);
+      return await this.centrossaludRepository.save(centrossalud);
       
     } catch (error) {
       

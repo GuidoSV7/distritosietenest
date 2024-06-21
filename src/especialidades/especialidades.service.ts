@@ -5,6 +5,7 @@ import { Especialidade } from './entities/especialidade.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { CentrosSaludsEspecialidades } from 'src/centrossaluds/entities/centrossalud-has-especialidad.entity';
 
 @Injectable()
 export class EspecialidadesService {
@@ -16,7 +17,9 @@ export class EspecialidadesService {
    
 
     @InjectRepository(Especialidade)
-    private readonly turnoRepository: Repository<Especialidade>,
+    private readonly especialidadeRepository: Repository<Especialidade>,
+
+
     
     
     private readonly dataSource: DataSource,
@@ -26,11 +29,12 @@ export class EspecialidadesService {
   async create(createEspecialidadeDto: CreateEspecialidadeDto) {
     try {
       const {...EspecialidadeDetails} = createEspecialidadeDto;
-      const turno = this.turnoRepository.create({
-        ...EspecialidadeDetails
+      const turno = this.especialidadeRepository.create({
+        ...EspecialidadeDetails       
       });
 
-      return await this.turnoRepository.save(turno);
+
+      return await this.especialidadeRepository.save(turno);
       
     } catch (error) {
       
@@ -43,7 +47,7 @@ export class EspecialidadesService {
 
     const {limit = 10, offset = 0} = paginationDto;
 
-    return this.turnoRepository.find({
+    return this.especialidadeRepository.find({
       take: limit,
       skip: offset
     });
@@ -54,7 +58,7 @@ export class EspecialidadesService {
 
     let turno: Especialidade;
 
-      const queryBuilder = this.turnoRepository.createQueryBuilder();
+      const queryBuilder = this.especialidadeRepository.createQueryBuilder();
       turno = await queryBuilder
         .where('id =:id ',{
           id:id,
@@ -73,7 +77,7 @@ export class EspecialidadesService {
 
     const {...toUpdate} = updateEspecialidadeDto;
 
-    const turno = await this.turnoRepository.preload({id, ...toUpdate});
+    const turno = await this.especialidadeRepository.preload({id, ...toUpdate});
 
     if(!turno){
       throw new NotFoundException(`Especialidade con id ${id} no encontrada`);
@@ -95,7 +99,7 @@ export class EspecialidadesService {
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      // await this.turnoRepository.save(turno);
+      // await this.especialidadeRepository.save(turno);
       return this.findOne(id);
 
     } catch{
@@ -116,14 +120,14 @@ export class EspecialidadesService {
 
     const turno = await this.findOne(id);
 
-    await this.turnoRepository.remove(turno);
+    await this.especialidadeRepository.remove(turno);
 
     return { mensaje: `La turno con id ${id} se eliminó exitosamente.` };
 
   }
 
   async deleteAllEspecialidades(){
-    const query = this.turnoRepository.createQueryBuilder('turno');
+    const query = this.especialidadeRepository.createQueryBuilder('turno');
 
     try{
       return await query

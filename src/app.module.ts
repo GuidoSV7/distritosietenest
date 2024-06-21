@@ -20,6 +20,8 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { CentrossaludsModule } from './centrossaluds/centrossaluds.module';
 import { EspecialidadesModule } from './especialidades/especialidades.module';
 import { TelegramModule } from './telegram/telegram.module';
+import { CentrosdeportivosModule } from './centrosdeportivos/centrosdeportivos.module';
+import { CentrosturisticosModule } from './centrosturisticos/centrosturisticos.module';
 
 
 @Module({
@@ -81,7 +83,11 @@ import { TelegramModule } from './telegram/telegram.module';
 
     EspecialidadesModule,
 
-    TelegramModule
+    TelegramModule,
+
+    CentrosdeportivosModule,
+
+    CentrosturisticosModule
 
 
   ],

@@ -3,7 +3,7 @@ import { CentrossaludsService } from './centrossaluds.service';
 import { CreateCentrossaludDto } from './dto/create-centrossalud.dto';
 import { UpdateCentrossaludDto } from './dto/update-centrossalud.dto';
 import { ApiResponse } from '@nestjs/swagger';
-import { CentrosSaluds } from './entities/centrossaludentity';
+import { CentrosSaluds } from './entities/centrossalud.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Controller('centrossaluds')

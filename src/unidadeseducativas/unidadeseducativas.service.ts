@@ -95,6 +95,7 @@ export class UnidadeseducativasService {
   async update(id: number, updateUnidadeseducativaDto: UpdateUnidadeseducativaDto) {
 
     const { fotos, ...toUpdate } = updateUnidadeseducativaDto;
+
   
     const unidadeducativa = await this.unidadeseducativaRepository.preload({
       id,
@@ -105,6 +106,8 @@ export class UnidadeseducativasService {
       idTurno: { id: updateUnidadeseducativaDto.idTurno },
       idGestion: { id: updateUnidadeseducativaDto.idGestion }
     });
+
+    console.log(unidadeducativa);
   
     if(!unidadeducativa){
       throw new NotFoundException(`Unidad Educativa con id ${id} no encontrada`);
@@ -118,6 +121,7 @@ export class UnidadeseducativasService {
     await queryRunner.startTransaction();
   
     try{
+      console.log('fotos', fotos);
   
       if(fotos){
         await queryRunner.manager.delete(UnidadEducativaFoto, {unidadeducativa: {id}});
@@ -126,7 +130,6 @@ export class UnidadeseducativasService {
       }
   
       await queryRunner.manager.save(unidadeducativa);
-  
       await queryRunner.commitTransaction();
       await queryRunner.release();
   

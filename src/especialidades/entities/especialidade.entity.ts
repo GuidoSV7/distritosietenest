@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { CentrosSaluds } from 'src/centrossaluds/entities/centrossaludentity';
+import { CentrosSaluds } from 'src/centrossaluds/entities/centrossalud.entity';
 import { CentrosSaludsEspecialidades } from 'src/centrossaluds/entities/centrossalud-has-especialidad.entity';
 
 
@@ -21,17 +21,17 @@ export class Especialidade {
     @Column()
     nombre: string;
 
-    @ApiProperty({
-        example: 'Dr. Juan Pérez',
-        description: 'Encargado de la Especialidad',
-    })
-    @Column()
-    encargado: string;
+    // @ApiProperty({
+    //     example: 'Dr. Juan Pérez',
+    //     description: 'Encargado de la Especialidad',
+    // })
+    // @Column()
+    // encargado: string;
 
     @ApiProperty({
         description: 'Centros de Salud que ofrecen esta Especialidad',
     })
     // En Especialidade
-    @OneToMany(() => CentrosSaludsEspecialidades, (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.especialidade)
+    @OneToMany(() => CentrosSaludsEspecialidades, (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.especialidad)
     centrosSaludsEspecialidades: CentrosSaludsEspecialidades[];
 }

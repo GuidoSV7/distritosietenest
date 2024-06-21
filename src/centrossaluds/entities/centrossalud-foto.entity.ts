@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { CentrosSaluds } from "./centrossaludentity";
+import { CentrosSaluds } from "./centrossalud.entity";
 
 
 @Entity({name: 'centros_salud_fotos'})

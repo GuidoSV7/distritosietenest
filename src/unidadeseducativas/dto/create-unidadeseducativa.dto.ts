@@ -86,6 +86,7 @@ export class CreateUnidadeseducativaDto {
     })
 
     @IsNumber()
+    @IsOptional()
     idInfraestructura?: number | null;
 
 
@@ -95,6 +96,7 @@ export class CreateUnidadeseducativaDto {
 
     })
     @IsNumber()
+    @IsOptional()
     idTipoColegio?: number | null;
 
     @ApiProperty({
@@ -103,6 +105,7 @@ export class CreateUnidadeseducativaDto {
 
     })
     @IsNumber()
+    @IsOptional()
     idTurno?: number | null;
 
     @ApiProperty({
