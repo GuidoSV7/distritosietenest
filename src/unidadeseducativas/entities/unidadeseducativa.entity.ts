@@ -3,6 +3,7 @@ import { UnidadEducativaFoto } from './unidadeducativa-foto.entity';
 import { Infraestructura } from '../../infraestructuras/entities/infraestructura.entity';
 import { Tipocolegio } from '../../tipocolegios/entities/tipocolegio.entity';
 import { Turno } from '../../turnos/entities/turno.entity';
+import { Denuncia } from '../../denuncias/entities/denuncia.entity';
 import { Gestione } from 'src/gestiones/entities/gestione.entity';
 import { Apoyossociale } from 'src/apoyossociales/entities/apoyossociale.entity';
 import { Apoyosgubernamentale } from 'src/apoyosgubernamentales/entities/apoyosgubernamentale.entity';
@@ -201,8 +202,10 @@ export class Unidadeseducativa {
     @OneToMany(() => Desayuno, (desayunos) => desayunos.unidadeducativa,{eager:true})
     desayunos: Desayuno[]
 
+    //Denuncias
+    @OneToMany(() => Denuncia, (denuncias) => denuncias.unidadeducativa,{eager:true})
+    denuncias: Denuncia[]
 
-    
     @ApiProperty({
         type: () => Mantenimiento,
         isArray: true,
@@ -211,7 +214,7 @@ export class Unidadeseducativa {
   
       })
     //Mantenimientos
-    @OneToMany(()=> Mantenimiento, (mantenimientos) => mantenimientos.unidadeducativa, {eager:true})
+    @OneToMany(()=> Mantenimiento, (mantenimientos) => mantenimientos.unidadeducativa, {eager:false})
     mantenimientos: Mantenimiento[]
 
 

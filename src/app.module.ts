@@ -22,6 +22,7 @@ import { EspecialidadesModule } from './especialidades/especialidades.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { CentrosdeportivosModule } from './centrosdeportivos/centrosdeportivos.module';
 import { CentrosturisticosModule } from './centrosturisticos/centrosturisticos.module';
+import { DenunciasModule } from './denuncias/denuncias.module';
 
 
 @Module({
@@ -87,7 +88,9 @@ import { CentrosturisticosModule } from './centrosturisticos/centrosturisticos.m
 
     CentrosdeportivosModule,
 
-    CentrosturisticosModule
+    CentrosturisticosModule,
+
+    DenunciasModule
 
 
   ],
