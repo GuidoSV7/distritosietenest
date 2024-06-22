@@ -23,6 +23,7 @@ import { TelegramModule } from './telegram/telegram.module';
 import { CentrosdeportivosModule } from './centrosdeportivos/centrosdeportivos.module';
 import { CentrosturisticosModule } from './centrosturisticos/centrosturisticos.module';
 import { DenunciasModule } from './denuncias/denuncias.module';
+import { GooglevisionModule } from './googlevision/googlevision.module';
 
 
 @Module({
@@ -90,7 +91,9 @@ import { DenunciasModule } from './denuncias/denuncias.module';
 
     CentrosturisticosModule,
 
-    DenunciasModule
+    DenunciasModule,
+
+    GooglevisionModule
 
 
   ],
