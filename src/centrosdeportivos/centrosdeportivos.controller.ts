@@ -3,9 +3,10 @@ import { CentrosdeportivosService } from './centrosdeportivos.service';
 import { CreateCentrosdeportivoDto } from './dto/create-centrosdeportivo.dto';
 import { UpdateCentrosdeportivoDto } from './dto/update-centrosdeportivo.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CentrosDeportivos } from './entities/centrosdeportivo.entity';
 
+@ApiTags('centros_deportivos')
 @Controller('centrosdeportivos')
 export class CentrosdeportivosController {
   constructor(private readonly centrosdeportivosService: CentrosdeportivosService) {}

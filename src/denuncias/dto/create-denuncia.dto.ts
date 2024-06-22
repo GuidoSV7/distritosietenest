@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsNumber, IsString } from "class-validator";
+import { IsDate, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateDenunciaDto {
 
@@ -10,6 +10,15 @@ export class CreateDenunciaDto {
     })
     @IsString()
     texto: string;
+
+    @ApiProperty({
+        description: 'Imagen de la denuncia',
+        nullable: true
+    })
+
+    @IsString()
+    @IsOptional()
+    imageUrl: string;
 
     @ApiProperty({
         description: 'ID de la Unidad Educativa a la que pertenece la Denuncia',

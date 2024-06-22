@@ -2,10 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { CentrossaludsService } from './centrossaluds.service';
 import { CreateCentrossaludDto } from './dto/create-centrossalud.dto';
 import { UpdateCentrossaludDto } from './dto/update-centrossalud.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CentrosSaluds } from './entities/centrossalud.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
+@ApiTags('centrosdesalud')
 @Controller('centrossaluds')
 export class CentrossaludsController {
   constructor(private readonly centrossaludsService: CentrossaludsService) {}

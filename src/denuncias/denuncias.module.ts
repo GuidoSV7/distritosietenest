@@ -6,6 +6,7 @@ import { Denuncia } from './entities/denuncia.entity';
 import { Unidadeseducativa } from 'src/unidadeseducativas/entities';
 import { TelegramModule } from 'src/telegram/telegram.module';
 import { UnidadeseducativasModule } from 'src/unidadeseducativas/unidadeseducativas.module';
+import { GooglevisionModule } from 'src/googlevision/googlevision.module';
 
 
 @Module({
@@ -13,7 +14,7 @@ import { UnidadeseducativasModule } from 'src/unidadeseducativas/unidadeseducati
   providers: [DenunciasService],
   imports: [
     TypeOrmModule.forFeature([Denuncia, Unidadeseducativa]),
-    TelegramModule, UnidadeseducativasModule // Agregado aquí
+    TelegramModule, UnidadeseducativasModule, GooglevisionModule
   ],
   
 })

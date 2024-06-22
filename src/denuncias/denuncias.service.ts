@@ -1,4 +1,5 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { SafeSearchDto } from './../googlevision/dto/safeSearch.dto';
+import { HttpException, HttpStatus, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateDenunciaDto } from './dto/create-denuncia.dto';
 import { Denuncia } from './entities/denuncia.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
@@ -7,6 +8,7 @@ import { DataSource, Repository } from 'typeorm';
 import { TelegramService } from 'src/telegram/telegram.service';
 import { CreateMessageTelegramDto } from 'src/telegram/dto/createmessage-telegram.dto';
 import { UnidadeseducativasService } from 'src/unidadeseducativas/unidadeseducativas.service';
+import { GooglevisionService } from 'src/googlevision/googlevision.service';
 
 
 @Injectable()
@@ -21,6 +23,8 @@ export class DenunciasService {
     private readonly denunciaRepository: Repository<Denuncia>,
     
     private readonly telegramService: TelegramService,
+
+    private readonly googlevisionService: GooglevisionService,
     
     private readonly unidadeseducativaService: UnidadeseducativasService,
     
@@ -30,18 +34,37 @@ export class DenunciasService {
 
   async create(createDenunciaDto: CreateDenunciaDto) {
     try {
-      const {idUnidadEducativa,...DenunciaDetails} = createDenunciaDto;
+      const {idUnidadEducativa, ...DenunciaDetails} = createDenunciaDto;
       const denuncia = this.denunciaRepository.create({
         ...DenunciaDetails,
         unidadeducativa: { id: idUnidadEducativa },
 
       });
 
+      if(denuncia.imageUrl){
+          //Verificar la imagen mandada
+          const safeSearchDto = new SafeSearchDto
+          safeSearchDto.imageUrl = denuncia.imageUrl;
+          
+          const dataImage = await this.googlevisionService.SafeSearch(safeSearchDto);
+         
+          if(dataImage.adult){
+            if(dataImage.adult != "VERY_UNLIKELY"){
+        
+              throw new HttpException('No puede mandar imagenes obcenas', HttpStatus.BAD_REQUEST)
+              
+            }
+          }
+    
+          
+    
+      }
+    
       const datosUE = await this.unidadeseducativaService.findOne(denuncia.unidadeducativa.id); 
 
       const createMessageTelegramDto = new CreateMessageTelegramDto 
       createMessageTelegramDto.chatId = "-4257486871";
-      createMessageTelegramDto.mensaje = "Mensaje de la Denuncia: " + denuncia.texto + "\nNombre UE: "  + datosUE.nombre + "\nDireccion: " + datosUE.direccion;
+      createMessageTelegramDto.mensaje = "Mensaje de la Denuncia: " + denuncia.texto + "\nNombre UE: "  + datosUE.nombre + "\nDireccion: " + datosUE.direccion + "\nImagen: " + denuncia.imageUrl;
       
       this.telegramService.sendMessage(createMessageTelegramDto);
       

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { SearchLabelsDto } from './dto/seach-labels.dto';
+import { SafeSearchDto } from './dto/safeSearch.dto';
 const vision = require('@google-cloud/vision');
 
 @Injectable()
@@ -15,6 +16,16 @@ export class GooglevisionService {
     const labels = result.labelAnnotations;
 
     return labels.map(label => label.description);
+  }
+
+  async SafeSearch(safeSearchDto: SafeSearchDto){
+    const {imageUrl} = safeSearchDto;
+
+    const [result] = await this.visionClient.safeSearchDetection(imageUrl);
+
+    const detections = result.safeSearchAnnotation;
+    
+    return detections;
   }
   
 }

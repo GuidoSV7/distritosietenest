@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { DenunciasService } from './denuncias.service';
 import { CreateDenunciaDto } from './dto/create-denuncia.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Denuncia } from './entities/denuncia.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
-
+@ApiTags('Denuncias')
 @Controller('denuncias')
 export class DenunciasController {
   constructor(private readonly denunciasService: DenunciasService) {}

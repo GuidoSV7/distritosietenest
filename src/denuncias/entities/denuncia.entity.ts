@@ -25,6 +25,14 @@ export class Denuncia {
     texto: string;
 
     @ApiProperty({
+      example: 'http://imagen.com',
+      description: 'Imagen de la denuncia'
+
+  })
+    @Column('text', { nullable: true })
+    imageUrl?: string;
+
+    @ApiProperty({
       example:  '2021-10-10T00:00:00.000Z' ,
       description: 'Fecha de la denuncia'
 
