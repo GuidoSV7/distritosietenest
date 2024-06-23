@@ -5,9 +5,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Unidadeseducativa } from './entities/unidadeseducativa.entity';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from '../common/dtos/pagination.dto';
-import { isUUID, IsString } from 'class-validator';
 import { UnidadEducativaFoto } from './entities';
-import { Tipocolegio } from '../tipocolegios/entities/tipocolegio.entity';
+import { Gestione } from 'src/gestiones/entities/gestione.entity';
+import { GestionesService } from 'src/gestiones/gestiones.service';
+import { InfraestructurasService } from 'src/infraestructuras/infraestructuras.service';
+import { TurnosService } from 'src/turnos/turnos.service';
+import { TipocolegiosService } from 'src/tipocolegios/tipocolegios.service';
+
 
 @Injectable()
 export class UnidadeseducativasService {
@@ -20,6 +24,12 @@ export class UnidadeseducativasService {
 
     @InjectRepository(UnidadEducativaFoto)
     private readonly unidadeseducativaFotoRepository: Repository<UnidadEducativaFoto>,
+
+    private readonly gestioneService: GestionesService,
+    private readonly infraestructuraService: InfraestructurasService,
+    private readonly turnosService: TurnosService,
+    private readonly tipocolegioService: TipocolegiosService,
+
 
     private readonly dataSource: DataSource,
   ){}
@@ -94,24 +104,20 @@ export class UnidadeseducativasService {
 
   async update(id: number, updateUnidadeseducativaDto: UpdateUnidadeseducativaDto) {
 
-    const { fotos, ...toUpdate } = updateUnidadeseducativaDto;
+    const { fotos,idGestion,idInfraestructura,idTipoColegio,idTurno, ...toUpdate } = updateUnidadeseducativaDto;
 
   
     const unidadeducativa = await this.unidadeseducativaRepository.preload({
       id,
       ...toUpdate,
-      
-      idInfraestructura: { id: updateUnidadeseducativaDto.idInfraestructura },
-      idTipoColegio: { id: updateUnidadeseducativaDto.idTipoColegio },
-      idTurno: { id: updateUnidadeseducativaDto.idTurno },
-      idGestion: { id: updateUnidadeseducativaDto.idGestion }
+
     });
 
-    console.log(unidadeducativa);
-  
+   
     if(!unidadeducativa){
       throw new NotFoundException(`Unidad Educativa con id ${id} no encontrada`);
     }
+
   
     //Create Query Runner
     const queryRunner = this.dataSource.createQueryRunner();
@@ -121,14 +127,29 @@ export class UnidadeseducativasService {
     await queryRunner.startTransaction();
   
     try{
-      console.log('fotos', fotos);
+      
   
       if(fotos){
         await queryRunner.manager.delete(UnidadEducativaFoto, {unidadeducativa: {id}});
         
         unidadeducativa.fotos = fotos.map(foto => this.unidadeseducativaFotoRepository.create({url: foto}));
       }
-  
+
+      if(idGestion){
+        unidadeducativa.idGestion = await this.gestioneService.findOne(idGestion);
+      }
+
+      if(idInfraestructura){
+        unidadeducativa.idInfraestructura = await this.infraestructuraService.findOne(idInfraestructura);
+      }
+
+      if(idTipoColegio){
+        unidadeducativa.idTipoColegio = await this.tipocolegioService.findOne(idTipoColegio);
+      }
+
+      if(idTurno){
+        unidadeducativa.idTurno = await this.turnosService.findOne(idTurno);
+      }
       await queryRunner.manager.save(unidadeducativa);
       await queryRunner.commitTransaction();
       await queryRunner.release();
@@ -148,7 +169,9 @@ export class UnidadeseducativasService {
     const { fotos = [], ...rest } = await this.findOne( id );
     return {
       ...rest,
-      fotos: fotos.map( foto => foto.url )
+      fotos: fotos.map( foto => foto.url ),
+
+
     }
   }
 

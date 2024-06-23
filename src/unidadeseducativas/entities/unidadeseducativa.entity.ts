@@ -93,7 +93,7 @@ export class Unidadeseducativa {
     @Column('text',{
         nullable: true,    
     })
-    video: string;
+    video?: string;
 
 
     @ApiProperty({
@@ -128,7 +128,7 @@ export class Unidadeseducativa {
 
     })
     //Infraestructura
-    @ManyToOne(() => Infraestructura ,  { onDelete: 'SET NULL', eager: true}) //eager es para mostrar datos de la foranea en la petición
+    @ManyToOne(() => Infraestructura ,  { onDelete: 'SET NULL', eager: true, cascade:true}) //eager es para mostrar datos de la foranea en la petición
     @JoinColumn({ name: 'idInfraestructura' })
     idInfraestructura?: Infraestructura | null; // Puede ser null
 
@@ -140,7 +140,7 @@ export class Unidadeseducativa {
 
     })
     //TipoColegio
-    @ManyToOne(() => Tipocolegio,  { onDelete: 'SET NULL' , eager: true})
+    @ManyToOne(() => Tipocolegio,  { onDelete: 'SET NULL' , eager: true, cascade:true})
     @JoinColumn({ name: 'idTipoColegio' })
     idTipoColegio?: Tipocolegio | null; // Puede ser null
 
@@ -153,7 +153,7 @@ export class Unidadeseducativa {
     })
     
     //Turno
-    @ManyToOne(() => Turno,  { onDelete: 'SET NULL' , eager: true})
+    @ManyToOne(() => Turno,  { onDelete: 'SET NULL' , eager: true, cascade:true})
     @JoinColumn({ name: 'idTurno' })
     idTurno?: Turno | null; // Puede ser null
 
@@ -164,7 +164,7 @@ export class Unidadeseducativa {
 
     })
     //Gestion
-    @ManyToOne(() => Gestione,  { onDelete: 'SET NULL' , eager: true , nullable: true})
+    @ManyToOne(() => Gestione,  { onDelete: 'SET NULL' , eager: true , nullable: true, cascade:true})
     @JoinColumn({ name: 'idGestion' })
     idGestion?: Gestione | null; 
 

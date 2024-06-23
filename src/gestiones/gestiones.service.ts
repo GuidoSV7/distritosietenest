@@ -54,7 +54,7 @@ export class GestionesService {
 
     let gestione: Gestione;
 
-      const queryBuilder = this.gestioneRepository.createQueryBuilder();
+      const queryBuilder = this.gestioneRepository.createQueryBuilder('gestione');
       gestione = await queryBuilder
         .where('id =:id ',{
           id:id,
