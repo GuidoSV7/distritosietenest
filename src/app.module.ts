@@ -24,6 +24,7 @@ import { CentrosdeportivosModule } from './centrosdeportivos/centrosdeportivos.m
 import { CentrosturisticosModule } from './centrosturisticos/centrosturisticos.module';
 import { DenunciasModule } from './denuncias/denuncias.module';
 import { GooglevisionModule } from './googlevision/googlevision.module';
+import { NumerosemergenciasModule } from './numerosemergencias/numerosemergencias.module';
 
 
 @Module({
@@ -93,7 +94,9 @@ import { GooglevisionModule } from './googlevision/googlevision.module';
 
     DenunciasModule,
 
-    GooglevisionModule
+    GooglevisionModule,
+
+    NumerosemergenciasModule
 
 
   ],
