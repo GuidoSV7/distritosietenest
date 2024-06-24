@@ -65,7 +65,7 @@ export class CreateUnidadeseducativaDto {
         nullable: false,
 
     })
-    @IsString()
+@IsString()
     @IsOptional()
     slug?: string;
 
