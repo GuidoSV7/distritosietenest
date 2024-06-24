@@ -50,7 +50,7 @@ export class DenunciasService {
           console.log(dataImage);
          
           if(dataImage.adult){
-            if(dataImage.adult != "VERY_UNLIKELY" && dataImage.racy != "VERY_UNLIKELY"){
+            if(dataImage.adult != "VERY_UNLIKELY" || dataImage.racy != "VERY_UNLIKELY"){
         
               throw new HttpException('No puede mandar imagenes obcenas', HttpStatus.BAD_REQUEST)
               
