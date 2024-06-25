@@ -49,6 +49,7 @@ export class UnidadeseducativasService {
         idTurno: { id: idTurno },
         idGestion: idGestion ? { id: idGestion } : null
       });
+      //
 
       return await this.unidadeseducativaRepository.save(unidadeducativa);
 
