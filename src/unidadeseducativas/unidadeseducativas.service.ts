@@ -120,7 +120,7 @@ export class UnidadeseducativasService {
     }
 
   
-    //Create Query Runner
+    //Create Query Runner//
     const queryRunner = this.dataSource.createQueryRunner();
     
     await queryRunner.connect();
