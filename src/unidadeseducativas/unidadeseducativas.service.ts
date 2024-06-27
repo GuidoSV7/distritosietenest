@@ -34,7 +34,7 @@ export class UnidadeseducativasService {
     private readonly dataSource: DataSource,
   ){}
 
-
+//
   async create(createUnidadeseducativaDto: CreateUnidadeseducativaDto) {
 
     try{
