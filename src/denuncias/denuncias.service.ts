@@ -37,7 +37,7 @@ export class DenunciasService {
       const {idUnidadEducativa, ...DenunciaDetails} = createDenunciaDto;
       const denuncia = this.denunciaRepository.create({
         ...DenunciaDetails,
-        idUnidadEducativa: { id: idUnidadEducativa },
+        idUnidadeducativa: { id: idUnidadEducativa },
 
       });
 
@@ -61,7 +61,7 @@ export class DenunciasService {
     
       }
     
-      const datosUE = await this.unidadeseducativaService.findOne(denuncia.unidadeducativa.id); 
+      const datosUE = await this.unidadeseducativaService.findOne(denuncia.idUnidadeducativa.id); 
 
       const createMessageTelegramDto = new CreateMessageTelegramDto 
       createMessageTelegramDto.chatId = "-4257486871";
