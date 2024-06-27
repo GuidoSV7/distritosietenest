@@ -203,7 +203,7 @@ export class Unidadeseducativa {
     desayunos: Desayuno[]
 
     //Denuncias
-    @OneToMany(() => Denuncia, (denuncias) => denuncias.unidadeducativa,{eager:true})
+    @OneToMany(() => Denuncia, (denuncias) => denuncias.idUnidadeducativa,{eager:true})
     denuncias: Denuncia[]
 
     @ApiProperty({
