@@ -41,7 +41,7 @@ export class Denuncia {
    @CreateDateColumn({ type: 'timestamp' })
    fecha: Date;
 
-    @ManyToOne(() => Unidadeseducativa, (unidadeducativa) => unidadeducativa.denuncias,{onDelete: 'CASCADE'} )
+    @ManyToOne(() => Unidadeseducativa ,{onDelete: 'CASCADE'} )
     @JoinColumn({ name: 'idUnidadEducativa' ,}) // Aquí está el cambio
-    unidadeducativa: Unidadeseducativa;
+    idUnidadeducativa: Unidadeseducativa;
 }

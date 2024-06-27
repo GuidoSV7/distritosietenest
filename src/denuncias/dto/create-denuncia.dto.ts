@@ -25,5 +25,5 @@ export class CreateDenunciaDto {
         nullable: false
     })
     @IsNumber()
-    idUnidadEducativa?: number;
+    idUnidadEducativa: number;
 }

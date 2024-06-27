@@ -37,7 +37,7 @@ export class DenunciasService {
       const {idUnidadEducativa, ...DenunciaDetails} = createDenunciaDto;
       const denuncia = this.denunciaRepository.create({
         ...DenunciaDetails,
-        unidadeducativa: { id: idUnidadEducativa },
+        idUnidadEducativa: { id: idUnidadEducativa },
 
       });
 
