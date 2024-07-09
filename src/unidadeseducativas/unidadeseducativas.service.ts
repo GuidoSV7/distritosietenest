@@ -74,7 +74,7 @@ export class UnidadeseducativasService {
     });
     
   }
-  //
+  
 
   async findOne(id : number) {
 
@@ -206,5 +206,5 @@ export class UnidadeseducativasService {
   }
 
 
-
+//
 }
