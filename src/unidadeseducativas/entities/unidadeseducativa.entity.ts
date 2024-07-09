@@ -172,7 +172,7 @@ export class Unidadeseducativa {
       type: () => Apoyossociale,
       isArray: true,
       description: 'La lista de apoyos sociales asociados a esta unidad educativa.',
-      example: [{id: 1, nombre: 'Apoyo Social 1', cantidad: 200, nombreEntrega: 'Ronald Camino', fecha: '20213-10-10'}]
+      example: [{id: 1, nombre: 'Apoyo Social 1', cantidad: 200, nombreEntrega: 'Ronald Camino', fecha: '2021-10-10'}]
 
     })
     //APoyos Sociales

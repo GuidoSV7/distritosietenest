@@ -25,6 +25,7 @@ import { CentrosturisticosModule } from './centrosturisticos/centrosturisticos.m
 import { DenunciasModule } from './denuncias/denuncias.module';
 import { GooglevisionModule } from './googlevision/googlevision.module';
 import { NumerosemergenciasModule } from './numerosemergencias/numerosemergencias.module';
+import { CentrosaludhasespecialidadesModule } from './centrosaludhasespecialidades/centrosaludhasespecialidades.module';
 
 
 @Module({
@@ -96,7 +97,9 @@ import { NumerosemergenciasModule } from './numerosemergencias/numerosemergencia
 
     GooglevisionModule,
 
-    NumerosemergenciasModule
+    NumerosemergenciasModule,
+
+    CentrosaludhasespecialidadesModule
 
 
   ],

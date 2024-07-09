@@ -1,7 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { CentrosSaluds } from 'src/centrossaluds/entities/centrossalud.entity';
-import { CentrosSaludsEspecialidades } from 'src/centrossaluds/entities/centrossalud-has-especialidad.entity';
+import { CentroSaludHasEspecialidade } from 'src/centrosaludhasespecialidades/entities/centrosaludhasespecialidade.entity';
+
 
 
 @Entity('especialidades')
@@ -32,6 +33,6 @@ export class Especialidade {
         description: 'Centros de Salud que ofrecen esta Especialidad',
     })
     // En Especialidade
-    @OneToMany(() => CentrosSaludsEspecialidades, (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.especialidad)
-    centrosSaludsEspecialidades: CentrosSaludsEspecialidades[];
+    @OneToMany(() => CentroSaludHasEspecialidade, (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.idEspecialidad)
+    centrosSaludsEspecialidades: CentroSaludHasEspecialidade[];
 }

@@ -6,8 +6,9 @@ import { CentrosSaluds } from './entities/centrossalud.entity';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { CentrosSaludFoto } from './entities/centrossalud-foto.entity';
-import { CentrosSaludsEspecialidades } from './entities/centrossalud-has-especialidad.entity';
+
 import { Especialidade } from 'src/especialidades/entities/especialidade.entity';
+import { CentroSaludHasEspecialidade } from 'src/centrosaludhasespecialidades/entities/centrosaludhasespecialidade.entity';
 
 @Injectable()
 export class CentrossaludsService {
@@ -27,8 +28,8 @@ export class CentrossaludsService {
     @InjectRepository(Especialidade)
     private readonly especialidadeRepository: Repository<Especialidade>,
 
-    @InjectRepository(CentrosSaludsEspecialidades)
-    private readonly centrossaludEspecialidadesRepository: Repository<CentrosSaludsEspecialidades>,
+    @InjectRepository(CentroSaludHasEspecialidade)
+    private readonly centrosSaludHasEspecialidadeRepository: Repository<CentroSaludHasEspecialidade>,
 
 
 
@@ -63,6 +64,7 @@ export class CentrossaludsService {
       skip: offset,
       relations: {
         fotos: true,
+        especialidades: true,
 
       }
     });
@@ -80,6 +82,11 @@ export class CentrossaludsService {
           
         })
         .leftJoinAndSelect("centrossalud.fotos", "fotos")
+        .leftJoinAndSelect("centrossalud.especialidades", "especialidades")
+        .addSelect("especialidades.id", "idEspecialidad")
+        
+
+        
         .getOne();
 
     if(!centrossalud){

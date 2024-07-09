@@ -5,13 +5,13 @@ import { AuthModule } from 'src/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CentrosSaluds } from './entities/centrossalud.entity';
 import { CentrosSaludFoto } from './entities/centrossalud-foto.entity';
-import { CentrosSaludsEspecialidades } from './entities/centrossalud-has-especialidad.entity';
 import { Especialidade } from 'src/especialidades/entities/especialidade.entity';
+import { CentroSaludHasEspecialidade } from 'src/centrosaludhasespecialidades/entities/centrosaludhasespecialidade.entity';
 
 @Module({
   controllers: [CentrossaludsController],
   providers: [CentrossaludsService],
-  imports: [TypeOrmModule.forFeature([CentrosSaluds, CentrosSaludFoto, CentrosSaludsEspecialidades, Especialidade]),
+  imports: [TypeOrmModule.forFeature([CentrosSaluds, CentrosSaludFoto, CentroSaludHasEspecialidade, Especialidade]),
   AuthModule
   ],
 

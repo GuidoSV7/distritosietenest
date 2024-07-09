@@ -2,7 +2,8 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMan
 import { ApiProperty } from '@nestjs/swagger';
 import { Especialidade } from 'src/especialidades/entities/especialidade.entity';
 import { CentrosSaludFoto } from './centrossalud-foto.entity';
-import { CentrosSaludsEspecialidades } from './centrossalud-has-especialidad.entity';
+import { CentroSaludHasEspecialidade } from 'src/centrosaludhasespecialidades/entities/centrosaludhasespecialidade.entity';
+
 
 @Entity('centros_salud')
 export class CentrosSaluds {
@@ -92,10 +93,11 @@ export class CentrosSaluds {
     @ApiProperty({
         description: 'Especialidades del Centro de Salud',
       })
+      
     // En CentrosSaluds
-    @OneToMany(() => CentrosSaludsEspecialidades,
-     (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.centroSalud, { eager: true })
-    especialidades?: CentrosSaludsEspecialidades[];
+    @OneToMany(() => CentroSaludHasEspecialidade,
+     (centrosSaludsEspecialidades) => centrosSaludsEspecialidades.idCentroSalud, { eager: true })
+    especialidades?: CentroSaludHasEspecialidade[];
     
   
 }

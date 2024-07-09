@@ -5,7 +5,7 @@ import { Especialidade } from './entities/especialidade.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
-import { CentrosSaludsEspecialidades } from 'src/centrossaluds/entities/centrossalud-has-especialidad.entity';
+
 
 @Injectable()
 export class EspecialidadesService {
