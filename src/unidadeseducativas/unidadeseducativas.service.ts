@@ -205,6 +205,4 @@ export class UnidadeseducativasService {
     }
   }
 
-
-//
 }
