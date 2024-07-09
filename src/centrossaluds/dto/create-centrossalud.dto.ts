@@ -69,11 +69,7 @@ export class CreateCentrossaludDto {
     @IsOptional()
     fotos?: string[];
 
-    @ApiProperty({
-        description: 'Especialidades del Centro de Salud',
-        nullable: true,
-
-    })
+   
     @IsString({ each: true })
     @IsArray()
     @IsOptional()

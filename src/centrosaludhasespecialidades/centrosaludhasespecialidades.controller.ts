@@ -2,10 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { CentrosaludhasespecialidadesService } from './centrosaludhasespecialidades.service';
 import { CreateCentrosaludhasespecialidadeDto } from './dto/create-centrosaludhasespecialidade.dto';
 import { UpdateCentrosaludhasespecialidadeDto } from './dto/update-centrosaludhasespecialidade.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CentroSaludHasEspecialidade } from './entities/centrosaludhasespecialidade.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
+@ApiTags('Centros de Salud tiene Especialidades')
 @Controller('centrosaludhasespecialidades')
 export class CentrosaludhasespecialidadesController {
   constructor(private readonly turnosService: CentrosaludhasespecialidadesService) {}

@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { SeedService } from './seed.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiExcludeEndpoint, ApiTags } from '@nestjs/swagger';
 import { Auth } from '../auth/decorators/auth.decorator';
 import { ValidRoles } from '../auth/interfaces/valid-roles';
 
@@ -12,6 +12,7 @@ export class SeedController {
   
   @Get()
   // @Auth(ValidRoles.superUser)
+  @ApiExcludeEndpoint()
   executeSeed(){
     return this.seedService.runSeed();
   }

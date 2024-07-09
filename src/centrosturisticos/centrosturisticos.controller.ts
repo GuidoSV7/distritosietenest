@@ -5,7 +5,7 @@ import { UpdateCentrosturisticoDto } from './dto/update-centrosturistico.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CentrosTuristico } from './entities/centrosturistico.entity';
-@ApiTags('centros_turisticos')
+@ApiTags('Centros Turisticos')
 @Controller('centrosturisticos')
 export class CentrosturisticosController {
   constructor(private readonly centrosturisticosService: CentrosturisticosService) {}

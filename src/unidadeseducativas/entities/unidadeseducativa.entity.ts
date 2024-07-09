@@ -201,6 +201,14 @@ export class Unidadeseducativa {
     //Desayunos
     @OneToMany(() => Desayuno, (desayunos) => desayunos.unidadeducativa,{eager:true})
     desayunos: Desayuno[]
+    
+    @ApiProperty({
+        type: () => Denuncia,
+        isArray: true,
+        description: 'La lista de Denuncias asociados a esta unidad educativa.',
+        example: [{id: 1, texto: 'No llegó el Desayuno', imageUrl: 'http://res.cloudinary.com/dc629i0tc/image/upload/v1719068039/j6quyouumksuktfxnjic.jpg', fecha: '2023-07-10'}]
+  
+      })
 
     //Denuncias
     @OneToMany(() => Denuncia, (denuncias) => denuncias.idUnidadeducativa,{eager:true})

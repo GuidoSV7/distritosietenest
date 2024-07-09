@@ -79,6 +79,7 @@ export class CentrosSaluds {
     paginaweburl: string;
 
     @ApiProperty({
+        example: ' ["https://www.google.com/imagen1.jpg","https://www.google.com/imagen2.jpg"]',
         description: 'Fotos del Centro de Salud',
       })
 
@@ -91,6 +92,7 @@ export class CentrosSaluds {
     fotos?: CentrosSaludFoto[];
 
     @ApiProperty({
+        example:[],
         description: 'Especialidades del Centro de Salud',
       })
       

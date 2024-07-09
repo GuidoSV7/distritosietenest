@@ -3,9 +3,10 @@ import { NumerosemergenciasService } from './numerosemergencias.service';
 import { CreateNumerosemergenciaDto } from './dto/create-numerosemergencia.dto';
 import { UpdateNumerosemergenciaDto } from './dto/update-numerosemergencia.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Numerosemergencia } from './entities/numerosemergencia.entity';
 
+@ApiTags('Numeros de Emergencia')
 @Controller('numerosemergencias')
 export class NumerosemergenciasController {
   constructor(private readonly numerosemergenciasService: NumerosemergenciasService) {}

@@ -5,7 +5,7 @@ import { UpdateEspecialidadeDto } from './dto/update-especialidade.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Especialidade } from './entities/especialidade.entity';
-@ApiTags('especialidades')
+@ApiTags('Especialidades')
 @Controller('especialidades')
 export class EspecialidadesController {
   constructor(private readonly especialidadesService: EspecialidadesService) {}

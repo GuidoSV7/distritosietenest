@@ -13,7 +13,8 @@ export class CentroSaludHasEspecialidade {
     @JoinColumn({ name: 'idCentroSalud' })
     idCentroSalud: CentrosSaluds;
 
-    @ManyToOne(() => Especialidade, { eager: true })
+
+    @ManyToOne(() => Especialidade, {onDelete: 'SET NULL', eager: true , cascade:true})
     @JoinColumn({ name: 'idEspecialidad' })
     idEspecialidad: Especialidade;
 

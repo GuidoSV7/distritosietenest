@@ -6,7 +6,7 @@ import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CentrosDeportivos } from './entities/centrosdeportivo.entity';
 
-@ApiTags('centros_deportivos')
+@ApiTags('Centros Deportivos')
 @Controller('centrosdeportivos')
 export class CentrosdeportivosController {
   constructor(private readonly centrosdeportivosService: CentrosdeportivosService) {}
