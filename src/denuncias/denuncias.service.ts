@@ -55,6 +55,7 @@ export class DenunciasService {
               throw new HttpException('No puede mandar imagenes obcenas', HttpStatus.BAD_REQUEST)
               
             }
+           }
           }
     
           
