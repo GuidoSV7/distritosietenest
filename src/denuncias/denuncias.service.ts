@@ -50,7 +50,7 @@ export class DenunciasService {
           console.log(dataImage);
          
           if(dataImage.adult){
-            if(dataImage.adult == "POSSIBLE" || dataImage.adult == "LIKELY" || dataImage.racy == "POSSIBLE" || dataImage.racy == "LIKELY"  ){{
+            if(dataImage.adult == "POSSIBLE" || dataImage.adult == "LIKELY" || dataImage.racy == "LIKELY"  ){{
         
               throw new HttpException('No puede mandar imagenes obcenas', HttpStatus.BAD_REQUEST)
               
