@@ -42,7 +42,7 @@ export class DenunciasService {
       });
 
       if(denuncia.imageUrl){
-          //Verificar la imagen mandada
+          //Verificar la imagen
           const safeSearchDto = new SafeSearchDto
           safeSearchDto.imageUrl = denuncia.imageUrl;
           
