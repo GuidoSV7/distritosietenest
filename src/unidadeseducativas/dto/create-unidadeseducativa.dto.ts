@@ -1,5 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsOptional, IsString, MinLength, IsArray } from "class-validator";
+import { Type } from "class-transformer";
+import { IsNumber, IsOptional, IsString, MinLength, IsArray, ValidateNested } from "class-validator";
+import { CreateGestioneDto } from "src/gestiones/dto/create-gestione.dto";
 
 export class CreateUnidadeseducativaDto {
 
@@ -108,14 +110,15 @@ export class CreateUnidadeseducativaDto {
     @IsOptional()
     idTurno?: number | null;
 
-    @ApiProperty({
-        description: 'Id de la Gestion de la Unidad Educativa',
-        nullable: true,
 
-    })
-    
-    @IsNumber()
-    @IsOptional()
-    idGestion?: number | null;
+    @ApiProperty({
+        description: 'Datos de la Gestion de la UE',
+        nullable: true,
+        type: CreateGestioneDto
+      })
+      @IsOptional()
+      @ValidateNested({ each: true })
+      @Type(() => CreateGestioneDto) 
+      gestion?: CreateGestioneDto[];
 
 }

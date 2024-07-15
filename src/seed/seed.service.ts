@@ -123,9 +123,9 @@ export class SeedService {
     const gestiones = initialData.gestiones;
     const insertPromises = [];
 
-    gestiones.forEach(gestione => {
-      insertPromises.push(this.gestioneService.create(gestione));
-    });
+    // gestiones.forEach(gestione => {
+    //   insertPromises.push(this.gestioneService.create(gestione));
+    // });
 
     await Promise.all(insertPromises);
 
@@ -282,7 +282,7 @@ export class SeedService {
     const insertPromises = [];
 
     unidadeseducativas.forEach(unidadeducativa => {
-      insertPromises.push(this.unidadeducativaService.create(unidadeducativa));
+      // insertPromises.push(this.unidadeducativaService.create(unidadeducativa));
     });
 
     await Promise.all(insertPromises);

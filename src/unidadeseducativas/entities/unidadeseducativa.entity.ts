@@ -13,6 +13,7 @@ import { Desayuno } from 'src/desayunos/entities/desayuno.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({name: 'unidades_educativas'})
+
 export class Unidadeseducativa {
 
     @ApiProperty({
@@ -31,7 +32,7 @@ export class Unidadeseducativa {
         minLength: 1,
     })
     @Column('text',{
-        unique: true,    
+          
     })
     nombre: string;
 
@@ -163,10 +164,12 @@ export class Unidadeseducativa {
         nullable: true,
 
     })
-    //Gestion
-    @ManyToOne(() => Gestione,  { onDelete: 'SET NULL' , eager: true , nullable: true, cascade:true})
-    @JoinColumn({ name: 'idGestion' })
-    idGestion?: Gestione | null; 
+
+
+    
+    // Gestion
+    @OneToOne(() => Gestione, (gestione) => gestione.unidadeducativa,  {cascade: true, eager:true})
+    gestion?: Gestione[];
 
     @ApiProperty({
       type: () => Apoyossociale,

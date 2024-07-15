@@ -25,7 +25,9 @@ export class UnidadeseducativasService {
     @InjectRepository(UnidadEducativaFoto)
     private readonly unidadeseducativaFotoRepository: Repository<UnidadEducativaFoto>,
 
-    private readonly gestioneService: GestionesService,
+    @InjectRepository(Gestione)
+    private readonly gestioneRepository: Repository<Gestione>,
+
     private readonly infraestructuraService: InfraestructurasService,
     private readonly turnosService: TurnosService,
     private readonly tipocolegioService: TipocolegiosService,
@@ -39,15 +41,19 @@ export class UnidadeseducativasService {
 
     try{
 
-      const {fotos = [], idInfraestructura, idTipoColegio, idTurno, idGestion, ...unidadeducativaDetails} = createUnidadeseducativaDto;
+      const {fotos = [],gestion, idInfraestructura, idTipoColegio, idTurno,  ...unidadeducativaDetails} = createUnidadeseducativaDto;
 
       const unidadeducativa = this.unidadeseducativaRepository.create({
         ...unidadeducativaDetails,
         fotos: fotos.map(foto => this.unidadeseducativaFotoRepository.create({url: foto})),
+        
         idInfraestructura: { id: idInfraestructura },
         idTipoColegio: { id: idTipoColegio },
-        idTurno: { id: idTurno },
-        idGestion: idGestion ? { id: idGestion } : null
+        idTurno: { id: idTurno }, 
+        gestion: this.gestioneRepository.create({
+         ...gestion
+        })
+          
       });
       //
 
@@ -69,6 +75,8 @@ export class UnidadeseducativasService {
       skip: offset,
       relations: {
         fotos: true,
+        idInfraestructura: true,
+        idTurno: true,
 
       }
     });
@@ -89,7 +97,7 @@ export class UnidadeseducativasService {
         .leftJoinAndSelect("unidadeducativa.fotos", "fotos")
         .leftJoinAndSelect("unidadeducativa.idInfraestructura", "Infraestructura")
         .leftJoinAndSelect("unidadeducativa.idTurno", "Turno")
-        .leftJoinAndSelect("unidadeducativa.idGestion", "Gestione")       
+        .leftJoinAndSelect("unidadeducativa.gestion", "Gestione")       
         .leftJoinAndSelect("unidadeducativa.apoyosSociales", "Apoyossociale")  
         .leftJoinAndSelect("unidadeducativa.apoyosGubernamentales", "Apoyosgubernamentale") 
         .leftJoinAndSelect("unidadeducativa.desayunos", "Desayuno") 
@@ -106,7 +114,7 @@ export class UnidadeseducativasService {
 
   async update(id: number, updateUnidadeseducativaDto: UpdateUnidadeseducativaDto) {
 
-    const { fotos,idGestion,idInfraestructura,idTipoColegio,idTurno, ...toUpdate } = updateUnidadeseducativaDto;
+    const { fotos, gestion, idInfraestructura,idTipoColegio,idTurno, ...toUpdate } = updateUnidadeseducativaDto;
 
   
     const unidadeducativa = await this.unidadeseducativaRepository.preload({
@@ -137,8 +145,27 @@ export class UnidadeseducativasService {
         unidadeducativa.fotos = fotos.map(foto => this.unidadeseducativaFotoRepository.create({url: foto}));
       }
 
-      if(idGestion){
-        unidadeducativa.idGestion = await this.gestioneService.findOne(idGestion);
+      if (gestion) {
+        // Paso 1: Recuperar el registro existente
+        const gestionExistente = await this.gestioneRepository.findOne({
+          where: { unidadeducativa: { id } },
+        });
+      
+        if (gestionExistente) {
+          // Paso 2: Actualizar solo los campos necesarios
+          const camposAActualizar = {
+            ...gestionExistente, // Conserva los valores existentes
+            ...gestion, // Sobrescribe solo los campos proporcionados en `gestion`
+          };
+      
+          // Paso 3: Guardar el registro actualizado
+          unidadeducativa.gestion = await this.gestioneRepository.save(camposAActualizar);
+        } else {
+          // Si no existe, crea uno nuevo (como en tu implementación actual)
+          unidadeducativa.gestion = this.gestioneRepository.create({
+            ...gestion,
+          });
+        }
       }
 
       if(idInfraestructura){

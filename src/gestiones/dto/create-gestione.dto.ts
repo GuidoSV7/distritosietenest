@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateGestioneDto {
 
@@ -8,26 +8,34 @@ export class CreateGestioneDto {
         nullable: false
     })
     @IsNumber()
+    @IsOptional()
     numero: number;
 
     @ApiProperty({
         description: 'horario de atencion de la reunion',
-        nullable: false
+        nullable: false,
+        required: false
     })
     @IsString()
-    horario: string;
+    @IsOptional()
+    horario?: string;
 
     @ApiProperty({
         description: 'Nombre del Director de la Gestion',
-        nullable: false
+        nullable: false,
+        required: false
     })
     @IsString()
-    director: string;
+    @IsOptional()
+    director?: string;
 
     @ApiProperty({
         description: 'Foto de la Junta Escolar de la Gestion',
-        nullable: true
+        nullable: true,
+        required: false
     })
     @IsString()
-    juntaescolar: string;
+    @IsOptional()
+    juntaescolar?: string;
+
 }

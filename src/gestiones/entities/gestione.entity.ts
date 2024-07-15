@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Unidadeseducativa } from "../../unidadeseducativas/entities";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('gestiones')
 export class Gestione {
@@ -57,7 +57,12 @@ export class Gestione {
     
 
 
-    @OneToMany(() => Unidadeseducativa, unidadeducativa => unidadeducativa.idGestion)
-    unidadeseducativas: Unidadeseducativa[];
+    // Relación bidireccional con UnidadEducativa
+    @OneToOne(() => Unidadeseducativa, (unidadeducativa) => unidadeducativa.gestion, {onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'idUnidadEducativa' })
+    unidadeducativa: Unidadeseducativa;
+
+
+
 
 }

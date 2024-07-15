@@ -27,7 +27,8 @@ export class GestionesService {
     try {
       const {...GestioneDetails} = createGestioneDto;
       const gestione = this.gestioneRepository.create({
-        ...GestioneDetails
+        ...GestioneDetails,
+        
       });
 
       return await this.gestioneRepository.save(gestione);
