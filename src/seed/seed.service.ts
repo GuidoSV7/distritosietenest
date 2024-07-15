@@ -282,7 +282,7 @@ export class SeedService {
     const insertPromises = [];
 
     unidadeseducativas.forEach(unidadeducativa => {
-      // insertPromises.push(this.unidadeducativaService.create(unidadeducativa));
+      insertPromises.push(this.unidadeducativaService.create(unidadeducativa));
     });
 
     await Promise.all(insertPromises);

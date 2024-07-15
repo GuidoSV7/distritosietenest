@@ -9,7 +9,6 @@ interface SeedUnidadEducativa {
   idInfraestructura: number;
   idTipoColegio: number;
   idTurno: number;
-  idGestion: number;
 }
 
 interface SeedUser {
@@ -44,6 +43,7 @@ interface SeedGestione {
   horario: string;
   director: string;
   juntaescolar: string;
+  idUnidadEducativa:number
 }
 
 interface SeedApoyossociales {
@@ -145,35 +145,40 @@ export const initialData: SeedData = {
       director: 'Lic. Daniel Sergio Covarrubias Camacho',
       juntaescolar:
         'https://media.telemundo51.com/2023/07/New-Broward-Public-Schools-superintendent-addresses-teacherunis-salaries.jpg?quality=85&strip=all&resize=850%2C478',
-    },
+      idUnidadEducativa: 3
+      },
     {
       numero: 567456,
       horario: '7:00 - 10:00',
       director: 'Lic. Daniel Sergio Covarrubias Camacho',
       juntaescolar:
         'https://media.telemundo51.com/2023/07/New-Broward-Public-Schools-superintendent-addresses-teachers-salaries.jpg?quality=85&strip=all&resize=850%2C478',
-    },
+        idUnidadEducativa: 1,
+      },
     {
       numero: 678456,
       horario: '17:00 - 10:00',
       director: 'Lic. Daniel Sergio Covarrubias Camacho',
       juntaescolar:
         'https://media.telemundo51.com/2023/07/New-Broward-Public-Schools-superintendent-addresses-teachers-salaries.jpg?quality=85&strip=all&resize=850%2C478',
-    },
+        idUnidadEducativa: 2
+      },
     {
       numero: 123456,
       horario: '7:00 - 10:00',
       director: 'Lic. Daniel Sergio Covarrubias Camacho',
       juntaescolar:
         'https://media.telemundo51.com/2023/07/New-Broward-Public-Schools-superintendent-addresses-teachers-salaries.jpg?quality=85&strip=all&resize=850%2C478',
-    },
+        idUnidadEducativa: 4
+      },
     {
       numero: 78956,
       horario: '7:00 - 10:00',
       director: 'Lic. Daniel Sergio Covarrubias Camacho',
       juntaescolar:
         'https://media.telemundo51.com/2023/07/New-Broward-Public-Schools-superintendent-addresses-teachers-salaries.jpg?quality=85&strip=all&resize=850%2C478',
-    },
+        idUnidadEducativa: 5
+      },
   ],
 
   turnos: [
@@ -224,8 +229,7 @@ export const initialData: SeedData = {
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
-      idTurno: 2,
-      idGestion: 1,
+      idTurno: 2
     },
     {
       nombre: 'Unidad Educativa Nacional Ayacucho',
@@ -241,8 +245,7 @@ export const initialData: SeedData = {
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
-      idTurno: 3,
-      idGestion: 2,
+      idTurno: 3
     },
     {
       nombre: 'Unidad Educativa 20 de Junio - Noche',
@@ -258,8 +261,7 @@ export const initialData: SeedData = {
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
-      idTurno: 3,
-      idGestion: 3,
+      idTurno: 3
     },
     {
       nombre: 'Unidad Educativa Pampa de la Cruz - B',
@@ -276,7 +278,6 @@ export const initialData: SeedData = {
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3,
-      idGestion: 4,
     },
     {
       nombre: 'Unidad educativa 20 de junio mañana',
@@ -292,8 +293,7 @@ export const initialData: SeedData = {
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
-      idTurno: 3,
-      idGestion: 5,
+      idTurno: 3
     },
   ],
 
