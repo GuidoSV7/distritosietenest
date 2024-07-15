@@ -255,7 +255,7 @@ export class SeedService {
 
   }
 
-  //
+  
   private async insertNewMantenimientos(){
 
     await this.mantenimientosService.deleteAllMantenimientos;
