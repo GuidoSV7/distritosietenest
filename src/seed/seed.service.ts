@@ -42,7 +42,6 @@ export class SeedService {
 
     await this.insertNewEspecialidades();
     await this.insertNewCategorias();
-    await this.insertNewGestiones();
     await this.insertNewInfraestructuras();
     await this.insertNewTipoColegios();  
     await this.insertNewTurnos();
@@ -51,7 +50,8 @@ export class SeedService {
     await this.insertNewApoyosGubernamentales();
     await this.insertNewDesayunos();
     await this.insertNewMantenimientos();
-    
+    await this.insertNewUnidadesEducativas();
+    await this.insertNewGestiones();
 
   
     
@@ -123,9 +123,9 @@ export class SeedService {
     const gestiones = initialData.gestiones;
     const insertPromises = [];
 
-    // gestiones.forEach(gestione => {
-    //   insertPromises.push(this.gestioneService.create(gestione));
-    // });
+    gestiones.forEach(gestione => {
+       insertPromises.push(this.gestioneService.create(gestione));
+     });
 
     await Promise.all(insertPromises);
 
