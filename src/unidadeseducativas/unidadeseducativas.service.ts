@@ -97,6 +97,7 @@ export class UnidadeseducativasService {
         .leftJoinAndSelect("unidadeducativa.fotos", "fotos")
         .leftJoinAndSelect("unidadeducativa.idInfraestructura", "Infraestructura")
         .leftJoinAndSelect("unidadeducativa.idTurno", "Turno")
+        .leftJoinAndSelect("unidadeducativa.idTipoColegio", "Tipocolegio")
         .leftJoinAndSelect("unidadeducativa.gestion", "Gestione")       
         .leftJoinAndSelect("unidadeducativa.apoyosSociales", "Apoyossociale")  
         .leftJoinAndSelect("unidadeducativa.apoyosGubernamentales", "Apoyosgubernamentale") 
