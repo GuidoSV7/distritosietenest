@@ -223,9 +223,9 @@ export const initialData: SeedData = {
       historia:
         'La Unidad Educativa 12 de Abril, fue fundado el 3 de Febrero el 1990, en aquel entonces ubicado en la Av. 3 de pasos al Frente, entre las Av. Che Guevara y Av. 16 de Julio, iniciando actividades en el ciclo intermedio, contando en sus inicios con 7 docente y 1 secretaria a la cabedez de la Directora Prof. Cristina Centellas. Actulamente la Unidad Educativa 12 de Abril funciona con el nivel Secundario, en el turno tarde, situado en el área urbana de la Ciduad de Santa Cruz de la Sierra, zona Villa 1ro de Mayo, entre las avenidas Tres pasos al frente, Av. Che Guevara y 5to anillo. La parte administrativa 2021-2023 se encuentra al cabeza del Lic. Daniel Sergio Covarrubias Camacho como director de la U.E., además de una secretaria, 2 auxiliares administrativos y una portera, todos al servicio de la comunidad educativa. 26 docentes altamente calificados, que brindan una excelente formación académica a todos nuestros estudiantes. Cuenta con 619 estudiantes distribuidos en sus 18 cursos de nivel Secundario de 1ro. a 6to., la gestión 2023 brindará a la ciudad y al país 80 flamantes bachilleres y futuros profesionales que tomarán las riendas de nuestras empresas, del departamento y del  país. La junta escolar a la cabeza de la Sra. Juana Graciela Vaca de Quiroga, quien junto a los P.P.F.F están pendiente de las necesidades del establecimiento.',
       fotos: [
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
+        'https://www.la-razon.com/wp-content/uploads/2023/01/11/02/COLEGIOS-LA-PAZ-LORETO-COLEGIO-LORETTO.jpg',
+        'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
+        'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
@@ -239,9 +239,9 @@ export const initialData: SeedData = {
       historia:
         'El 13 de Enero de 1991 se obtiene la Resolución Administartica cambiando el nombre de julio leigue hurtado a Nacional Ayacucho tránsmite que se realizó por el Prof. Santiago Fernández. En fecha 1ro de febrero de 2010 la unidad educativa cambia de edificio y turno trasladándose al modulo educativo 18 de marzo, turno mañana nivel secundaria, con el mismo nombre y sie 81980505 y servicio 75013. En la actualidad contamos con 18 cursos y un total de 718 estudiantes, 26 docentes y 4 administrativos que conforman un personal docente selecto en las diferentes especialidades del nivel secundario; a cargo del director Lic. Javier Jaime Apala Condori. Se destaca la participacion de los estudiantes en actividades como las Olimpiadas Cientificas, juegos plurinacionales, concursos departamentales y la conformacion de la banda de música, concursos de ajedrez. ',
       fotos: [
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
+        'https://www.la-razon.com/wp-content/uploads/2023/01/11/02/COLEGIOS-LA-PAZ-LORETO-COLEGIO-LORETTO.jpg',
+        'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
+        'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
@@ -255,9 +255,9 @@ export const initialData: SeedData = {
       historia:
         'Unidad Educativa 20 de Junio - Noche, reseña historica 1995 - 2023 Fue fundada en 1995 bajo la administración del Prof. José Luis Azurduy, con la resolución administrativa N° 166299 de 26 de Noviembre de 1999. La Unidad Educativa 20 de Junio - Noche es de nivel secundario educación comunitaria productiva. La unidad educativa es de turno noche. Director de la Unidad Educativa: Lic. Marcelino Zambrana Condori. Administrativo: Cuenta con 2 administrativos y 1 de servicio. Docentes: Trabajan 16 profesores. Estudiantes: La unidad educativa cobija 388 estudiantes',
       fotos: [
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
+        'https://www.la-razon.com/wp-content/uploads/2023/01/11/02/COLEGIOS-LA-PAZ-LORETO-COLEGIO-LORETTO.jpg',
+        'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
+        'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
@@ -271,9 +271,9 @@ export const initialData: SeedData = {
       historia:
         'La Unidad Educativa Pampa de la Cruz - B nació como escuela Rural ahora urbana, el 06 de diciembre del año 1963, teniendo hoy en día 60 años de funcionamiento, está ubicada en la villa 1ro de Mayo Barrio Pampa de la Cruz, sobre la Av.Cumavi, entre el 6to Anillo y a una cuadra antes de la Av. 16 de Julio. e encuentra dirigiendo está Institución Educativa la Lic. Rocío del Carmen Durán de los Ríos la unidad educativa cuenta en la actualidad con 354 estudiantes, 15 docentes y 3 administrativos',
       fotos: [
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
+        'https://www.la-razon.com/wp-content/uploads/2023/01/11/02/COLEGIOS-LA-PAZ-LORETO-COLEGIO-LORETTO.jpg',
+        'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
+        'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
@@ -287,9 +287,9 @@ export const initialData: SeedData = {
       historia:
         'Fue fundada el 20 de junio de 1979 en los predios del centro educativo para dar inicio a la hora de construcción gestionado por los padres y madres de la familia a la cabeza de la señora petrona montaño. El 17 de abril de 1980 se consigue la ayuda del club de Leones para la construcción de tres aulas en dirección y baños al mismo tiempo se consiguen tres items para el funcionamiento del medio educativa con un curso de kinder y el ciclo básico completo, Los primeros docentes fueron los siguientes Mary tapia ,Carmen Lazo Y Laudencio Benavides los mismos que trabajan mañana y tarde para cubrir la falta de ítem y así se comienza a trabajar en casa de familia hasta esperar que termine la construcción Actualmente la directora del unidad educativa 20 de junio es la Lic. Vicky Betsabé Marín marca en el turno de la mañana junto a 13 docentes altamente calificados también cuenta con 1 personal administrativo y de 1 servicio En este momento cuenta con 450 estudiantes en los niveles de inicial en familia comunitaria y primaria comunitaria vocacional',
       fotos: [
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
-        'https://www.12deabril.edu.bo/wp-content/uploads/2021/04/IMG_20210401_095356.jpg',
+        'https://www.la-razon.com/wp-content/uploads/2023/01/11/02/COLEGIOS-LA-PAZ-LORETO-COLEGIO-LORETTO.jpg',
+        'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
+        'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
       idInfraestructura: 1,
       idTipoColegio: 1,
