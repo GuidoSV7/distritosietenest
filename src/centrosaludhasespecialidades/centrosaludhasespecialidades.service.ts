@@ -5,6 +5,8 @@ import { CentroSaludHasEspecialidade } from './entities/centrosaludhasespecialid
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { CentrossaludsService } from 'src/centrossaluds/centrossaluds.service';
+import { EspecialidadesService } from 'src/especialidades/especialidades.service';
 
 @Injectable()
 export class CentrosaludhasespecialidadesService {
@@ -13,10 +15,13 @@ export class CentrosaludhasespecialidadesService {
 
   constructor(
 
-   
+
 
     @InjectRepository(CentroSaludHasEspecialidade)
     private readonly centrosaludhasespecialidadeRepository: Repository<CentroSaludHasEspecialidade>,
+
+    private readonly centroSaludService: CentrossaludsService,
+    private readonly especialidadesService: EspecialidadesService,
     
     
     private readonly dataSource: DataSource,
@@ -48,7 +53,8 @@ export class CentrosaludhasespecialidadesService {
 
     return this.centrosaludhasespecialidadeRepository.find({
       take: limit,
-      skip: offset
+      skip: offset,
+
     });
     
   }
@@ -60,6 +66,7 @@ export class CentrosaludhasespecialidadesService {
       const queryBuilder = this.centrosaludhasespecialidadeRepository.createQueryBuilder();
       centrosaludhasespecialidade = await queryBuilder
         .where('id =:id ',{
+
           id:id,
         })
         .getOne();
@@ -91,14 +98,21 @@ export class CentrosaludhasespecialidadesService {
 
     try{
 
+      if(idCentroSalud){
+        
+        centrosaludhasespecialidade.idCentroSalud = await this.centroSaludService.findOne(idCentroSalud);
+      }
 
+      if(idEspecialidad){
+        centrosaludhasespecialidade.idEspecialidad = await this.especialidadesService.findOne(idEspecialidad);
+      }
 
       await queryRunner.manager.save(centrosaludhasespecialidade);
 
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      // await this.centrosaludhasespecialidadeRepository.save(centrosaludhasespecialidade);
+      await this.centrosaludhasespecialidadeRepository.save(centrosaludhasespecialidade);
       return this.findOne(id);
 
     } catch{

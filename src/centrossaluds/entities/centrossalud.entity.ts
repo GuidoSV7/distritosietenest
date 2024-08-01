@@ -3,6 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Especialidade } from 'src/especialidades/entities/especialidade.entity';
 import { CentrosSaludFoto } from './centrossalud-foto.entity';
 import { CentroSaludHasEspecialidade } from 'src/centrosaludhasespecialidades/entities/centrosaludhasespecialidade.entity';
+import { IsOptional } from 'class-validator';
 
 
 @Entity('centros_salud')
@@ -40,43 +41,47 @@ export class CentrosSaluds {
         example: '123 Calle Principal',
         description: 'Dirección del Centro de Salud',
     })
-    @Column()
+    @Column('text')
     direccion: string;
 
     @ApiProperty({
         example: 'UV001',
         description: 'UV del Centro de Salud',
     })
-    @Column()
+    @Column('text')
     uv: string;
 
     @ApiProperty({
         example: '8:00 - 17:00',
         description: 'Horario del Centro de Salud',
     })
-    @Column()
+    @Column('text')
     horario: string;
 
     @ApiProperty({
         example: 1,
         description: 'Nivel del Centro de Salud',
     })
-    @Column()
+    @Column('integer')
     nivel: number;
 
     @ApiProperty({
         example: 'https://example.com/video',
         description: 'URL del video del Centro de Salud',
     })
-    @Column()
-    video: string;
+    @Column('text',{
+        nullable: true,  
+    })
+    videoUrl?: string ;
 
     @ApiProperty({
         example: 'https://example.com',
         description: 'URL de la página web del Centro de Salud',
     })
-    @Column()
-    paginaweburl: string;
+    @Column('text',{
+        nullable: true
+    })
+    paginawebUrl?: string;
 
     @ApiProperty({
         example: ' ["https://www.google.com/imagen1.jpg","https://www.google.com/imagen2.jpg"]',
