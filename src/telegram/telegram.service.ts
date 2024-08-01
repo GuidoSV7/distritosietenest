@@ -9,7 +9,7 @@ export class TelegramService {
 
   sendMessage(createMessageTelegramDto: CreateMessageTelegramDto) {
     const params: TelegramSendMessageParams = {
-      chat_id: createMessageTelegramDto.chatId,
+      chat_id: process.env.TELEGRAM_CHAT_ID,
       text: createMessageTelegramDto.mensaje
     };
 

@@ -41,31 +41,11 @@ export class DenunciasService {
 
       });
 
-      if(denuncia.imageUrl){
-          //Verificar la imagen
-          const safeSearchDto = new SafeSearchDto
-          safeSearchDto.imageUrl = denuncia.imageUrl;
-          
-          const dataImage = await this.googlevisionService.SafeSearch(safeSearchDto);
-          console.log(dataImage);
-         
-          if(dataImage.adult){
-            if(dataImage.adult == "POSSIBLE" || dataImage.adult == "LIKELY" || dataImage.racy == "LIKELY"  ){{
-        
-              throw new HttpException('No puede mandar imagenes obcenas', HttpStatus.BAD_REQUEST)
-              
-            }
-           }
-          }
-    
-          
-    
-      }
     
       const datosUE = await this.unidadeseducativaService.findOne(denuncia.idUnidadeducativa.id); 
 
       const createMessageTelegramDto = new CreateMessageTelegramDto 
-      createMessageTelegramDto.chatId = "-4257486871";
+      // createMessageTelegramDto.chatId = process.env.TELEGRAM_CHAT_ID
       createMessageTelegramDto.mensaje = "Mensaje de la Denuncia: " + denuncia.texto + "\nNombre UE: "  + datosUE.nombre + "\nDireccion: " + datosUE.direccion + "\nImagen: " + denuncia.imageUrl;
       
       this.telegramService.sendMessage(createMessageTelegramDto);

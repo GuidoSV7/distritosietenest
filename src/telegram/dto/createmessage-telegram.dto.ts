@@ -11,12 +11,12 @@ export class CreateMessageTelegramDto {
     @IsString()
     mensaje: string;
 
-    @ApiProperty({
-        description: 'Id del Chat de Telegram al que se enviara el mensaje',
-        nullable: false,
-        minLength: 1,
-    })
-    @IsString()
-    chatId: string;
+    // @ApiProperty({
+    //     description: 'Id del Chat de Telegram al que se enviara el mensaje',
+    //     nullable: false,
+    //     minLength: 1,
+    // })
+    // @IsString()
+    // chatId: string;
 
 }
