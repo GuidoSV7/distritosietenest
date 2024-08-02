@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { OficinadistritalService } from './oficinadistrital.service';
 import { UpdateOficinadistritalDto } from './dto/update-oficinadistrital.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('OficinaDistrital')
 @Controller('oficinadistrital')
 export class OficinadistritalController {
   constructor(private readonly oficinadistritalService: OficinadistritalService) {}
