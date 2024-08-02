@@ -23,9 +23,10 @@ import { TelegramModule } from './telegram/telegram.module';
 import { CentrosdeportivosModule } from './centrosdeportivos/centrosdeportivos.module';
 import { CentrosturisticosModule } from './centrosturisticos/centrosturisticos.module';
 import { DenunciasModule } from './denuncias/denuncias.module';
-import { GooglevisionModule } from './googlevision/googlevision.module';
+
 import { NumerosemergenciasModule } from './numerosemergencias/numerosemergencias.module';
 import { CentrosaludhasespecialidadesModule } from './centrosaludhasespecialidades/centrosaludhasespecialidades.module';
+import { OficinadistritalModule } from './oficinadistrital/oficinadistrital.module';
 
 
 @Module({
@@ -95,11 +96,12 @@ import { CentrosaludhasespecialidadesModule } from './centrosaludhasespecialidad
 
     DenunciasModule,
 
-    GooglevisionModule,
 
     NumerosemergenciasModule,
 
-    CentrosaludhasespecialidadesModule
+    CentrosaludhasespecialidadesModule,
+
+    OficinadistritalModule
 
 
   ],

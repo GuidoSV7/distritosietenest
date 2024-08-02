@@ -1,4 +1,4 @@
-import { SafeSearchDto } from './../googlevision/dto/safeSearch.dto';
+
 import { HttpException, HttpStatus, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateDenunciaDto } from './dto/create-denuncia.dto';
 import { Denuncia } from './entities/denuncia.entity';
@@ -8,7 +8,6 @@ import { DataSource, Repository } from 'typeorm';
 import { TelegramService } from 'src/telegram/telegram.service';
 import { CreateMessageTelegramDto } from 'src/telegram/dto/createmessage-telegram.dto';
 import { UnidadeseducativasService } from 'src/unidadeseducativas/unidadeseducativas.service';
-import { GooglevisionService } from 'src/googlevision/googlevision.service';
 
 
 @Injectable()
@@ -24,7 +23,7 @@ export class DenunciasService {
     
     private readonly telegramService: TelegramService,
 
-    private readonly googlevisionService: GooglevisionService,
+
     
     private readonly unidadeseducativaService: UnidadeseducativasService,
     
