@@ -54,7 +54,7 @@ export class UpdateOficinadistritalDto  {
     })
     @IsString()
     @IsOptional()
-    videoUrl?: string;
+    fotoUrl?: string;
 
     @ApiProperty({
         description: 'Número de teléfono de la oficina',
