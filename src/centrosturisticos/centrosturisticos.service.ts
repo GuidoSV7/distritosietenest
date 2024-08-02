@@ -112,7 +112,7 @@ export class CentrosturisticosService {
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      // await this.centrosturisticoRepository.save(centrosturistico);
+      
       return this.findOne(id);
 
     } catch{

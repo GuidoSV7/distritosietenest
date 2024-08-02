@@ -1,0 +1,266 @@
+[33mcommit 3ff5bc46c3384621d24f77d91a73e4f4ecc4181e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31mheroku/main[m[33m)[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Fri Aug 2 11:20:00 2024 -0400
+
+    add fotoUrl in oficinadistrital
+
+[33mcommit 7d76df7b5e78883b47c280eeb25b634e91318184[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Aug 1 23:56:44 2024 -0400
+
+    oficinadistrital add
+
+[33mcommit 73ef2007c507d5966eb608432cdd1a9a99c33b6b[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Aug 1 18:59:42 2024 -0400
+
+    new imagenes in ue
+
+[33mcommit 644ecde77e36561c5f10caa09b4ec98fcde80b80[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Aug 1 18:55:38 2024 -0400
+
+    Telegram env
+
+[33mcommit e6ef5db953270d9ab230d5882d43d27e47bd4497[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Aug 1 15:23:24 2024 -0400
+
+    Centros de Salud con Especialidad Terminados
+
+[33mcommit 22bbd171530766d6430890e74520ca9d13ac56c1[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jul 18 22:39:39 2024 -0400
+
+    add TipoColegio in UE
+
+[33mcommit 612c5bff4dec1141956370a787aed0652514f0ec[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 17:55:09 2024 -0400
+
+    deploy
+
+[33mcommit e1ed4140ad280c196fd181caaadc245655210ef1[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 17:49:12 2024 -0400
+
+    poblar
+
+[33mcommit 7ad009dd34b27bc5a160c8a20919940e38521135[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 17:42:33 2024 -0400
+
+    deploooy
+
+[33mcommit 1c0a9472f213960a99bf9fda66d748055260285a[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 11:37:56 2024 -0400
+
+    deploy
+
+[33mcommit bbf7e546a3ad7e08ac660bfb486e399457176912[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 11:20:13 2024 -0400
+
+    deeeploy
+
+[33mcommit 81ff3e86e3f03202a58441fe73f64db76c28e130[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 01:20:29 2024 -0400
+
+    de
+
+[33mcommit 18eabbe451cf3baca87c26f3142857ccf000c830[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 01:17:42 2024 -0400
+
+    Poblando Gestiones
+
+[33mcommit 3fe0adab35530bd3e40153b4e0ad3a77756fbc23[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jul 15 01:12:29 2024 -0400
+
+    Gestion al crear ue
+
+[33mcommit e613745dba387cf6ced506ed5b0bc32d7a6354cb[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jul 11 20:20:05 2024 -0400
+
+    ddeeee
+
+[33mcommit 04a958ab9076263bb2deb864f7bd6cb81b3edf3e[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jul 11 16:18:30 2024 -0400
+
+    dee
+
+[33mcommit d25b3c28faf950d8afe602db4bc81e237ee5fd94[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Wed Jul 10 12:22:47 2024 -0400
+
+    quitar possible racy
+
+[33mcommit 409b23566e63f7c226963e041f6e25f23de9f8ca[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Wed Jul 10 12:17:27 2024 -0400
+
+    problems
+
+[33mcommit 306b40480afd40e383fb89581a1f940a089b57c4[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Wed Jul 10 12:15:31 2024 -0400
+
+    Mejorando las denuncias 2
+
+[33mcommit 9f401ff635c002685890782e0fe24d31864e1755[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Wed Jul 10 12:10:36 2024 -0400
+
+    Mejorando las denuncias
+
+[33mcommit ff5f0f6065e56ee924e901955159bc1b01c62ae5[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jul 9 14:24:39 2024 -0400
+
+    Dee
+
+[33mcommit af7a0cdfcf960fa4736c1eb26efc2a74123594b1[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jul 9 12:08:36 2024 -0400
+
+    d
+
+[33mcommit e9383a3df92d57b2a0270d086afcd785eea974a0[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jul 9 11:29:53 2024 -0400
+
+    deploy
+
+[33mcommit 7ed2b7649c0529e8ce31a4ced77409b514dc60ad[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jul 9 00:48:39 2024 -0400
+
+    Mejorando el Swagger
+
+[33mcommit f6618487739f392ce063dcd4ff6c7085ca0c0080[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jul 9 00:04:55 2024 -0400
+
+    Centro de Salud tiene especialidades
+
+[33mcommit 3988d8fffa3ad2c020ad25fdd8f7a0c52f540705[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jun 27 18:26:59 2024 -0400
+
+    Deplooooy
+
+[33mcommit 95e0f05a145445b550072281428e80544f373c55[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jun 27 17:14:51 2024 -0400
+
+    problems 3
+
+[33mcommit d9dbd4c29d36f6e494a6e45208b6f2a19dfd8aa0[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jun 27 17:13:15 2024 -0400
+
+    problems 2
+
+[33mcommit f1a3fd06c2aa00651eb3e9912ec0c3ac2d18db2e[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jun 27 17:10:48 2024 -0400
+
+    problem with idUnidadEducativa
+
+[33mcommit 420eb308005d825c07d1ec9891946465daceab3f[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Thu Jun 27 13:18:03 2024 -0400
+
+    deplooy
+
+[33mcommit f372495cf4d62aa869babe509f451fbca72663b9[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jun 25 12:24:48 2024 -0400
+
+    deploy
+
+[33mcommit e0bae4d6477f9bca68075c4e603d4ab1ef6c23e9[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jun 25 07:14:54 2024 -0400
+
+    new credentials
+
+[33mcommit f99227e513541e2f14cb42e664f5c7d293d6141e[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jun 25 04:37:42 2024 -0400
+
+    deee
+
+[33mcommit b95ae3078710dd91a5a35a43a28c5ded3589b3c8[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jun 25 03:59:09 2024 -0400
+
+    deploy
+
+[33mcommit 07f2dfc690e144b6ec913dcf72f2613dbd6bee25[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jun 24 18:17:59 2024 -0400
+
+    Validation OR
+
+[33mcommit 479723e9a03b7213ca09fdd65f8ccfaeae40b425[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Mon Jun 24 11:56:23 2024 -0400
+
+    Add Racy in the validate IA
+
+[33mcommit 13728ded3705fc101608d26997ff7750ba964711[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Sat Jun 22 23:20:19 2024 -0400
+
+    Numeros de Emergencia Module
+
+[33mcommit 7cb49829465e0b2ff2ff13ee45139a8b45914a80[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Sat Jun 22 21:00:40 2024 -0400
+
+    Bug al update arreglado
+
+[33mcommit e6449914bf193d7a70c3566a04c61cb3b7f455db[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Sat Jun 22 10:57:09 2024 -0400
+
+    Validar imagen con IA
+
+[33mcommit 64a8a5a2ee686ff0b73b99b8384223fe33da706d[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Fri Jun 21 22:42:47 2024 -0400
+
+    Google Vision Module
+
+[33mcommit cce45dbef4ce80fd72b8e79bf2cf8e2d7a006047[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Fri Jun 21 20:54:17 2024 -0400
+
+    Modulo de Denuncias
+
+[33mcommit 0fea6af42c34ef04af9fbfd7fdcbe58adb3114f0[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Fri Jun 21 16:50:14 2024 -0400
+
+    centros deportivos y turisticos terminado
+
+[33mcommit d293d96a43414b92949039ebeb958925e626506a[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jun 18 16:57:04 2024 -0400
+
+    Mensajes a Telegram
+
+[33mcommit f4a0b978a3dbda2decbde967e53712bf33337ab8[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail.com>
+Date:   Tue Jun 18 15:57:27 2024 -0400
+
+    Empezando mensajes a Telegram
+
+[33mcommit 710e0d2b4a648ec28e476baf670fcf38adbbeb7e[m
+Author: Guido Salazar Vargas <Guido.salazar.vargas7@gmail

@@ -96,7 +96,7 @@ export class GestionesService {
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      // await this.gestioneRepository.save(gestione);
+      
       return this.findOne(id);
 
     } catch{

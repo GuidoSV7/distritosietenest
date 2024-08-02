@@ -99,7 +99,7 @@ export class MantenimientosService {
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      await this.mantenimientoRepository.save(mantenimiento);
+     
       return this.findOne(id);
 
     } catch{

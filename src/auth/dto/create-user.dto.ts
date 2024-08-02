@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsString, MaxLength, isString } from "class-validator";
+import { IsArray, IsEmail, IsOptional, IsString, MaxLength, isString } from "class-validator";
 
 export class CreateUserDto{
 
@@ -25,6 +25,14 @@ export class CreateUserDto{
     @IsString()
     @MaxLength(8)
     password: string;
+
+    @ApiProperty({
+        description: 'Rol del Usuario',
+        nullable: false
+    })
+    @IsArray()
+    @IsOptional()
+    roles: string[];
 
 
 }
