@@ -98,6 +98,17 @@ export class Unidadeseducativa {
 
 
     @ApiProperty({
+        example: '86',
+        description: 'UV por de la Unidad Educativa',
+        nullable: true,
+
+    })
+    @Column('text',{
+        nullable: true,    
+    })
+    uv?: string;
+
+    @ApiProperty({
         example: ' unidad-educativa',
         description: 'Slug de la Unidad Educativa',
         nullable: false,

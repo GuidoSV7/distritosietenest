@@ -61,6 +61,15 @@ export class CreateUnidadeseducativaDto {
     @IsOptional()
     video?: string;
 
+    @ApiProperty({
+        description: 'Uv de la Unidad Educativa',
+        nullable: true,
+
+    }) 
+    @IsString()
+    @IsOptional()
+    uv?: string;
+
 
     @ApiProperty({
         description: 'Slug de la Unidad Educativa, Lo crea automaticamente el sistema',

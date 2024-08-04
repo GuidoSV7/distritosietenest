@@ -6,6 +6,7 @@ interface SeedUnidadEducativa {
   direccion: string;
   historia: string;
   fotos: string[];
+  uv: string;
   idInfraestructura: number;
   idTipoColegio: number;
   idTurno: number;
@@ -227,6 +228,7 @@ export const initialData: SeedData = {
         'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
         'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
+      uv: '86',
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 2
@@ -243,6 +245,7 @@ export const initialData: SeedData = {
         'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
         'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
+      uv: '87',
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3
@@ -259,6 +262,7 @@ export const initialData: SeedData = {
         'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
         'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
+      uv: '86',
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3
@@ -275,6 +279,7 @@ export const initialData: SeedData = {
         'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
         'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
+      uv: '87',
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3,
@@ -291,6 +296,7 @@ export const initialData: SeedData = {
         'https://www.flacsi.net/wp-content/uploads/2013/05/jpeg.jpg',
         'https://www.lostiempos.com/sites/default/files/styles/noticia_detalle/public/media_imagen/2019/7/20/clg_9962.jpg?itok=QTuymErh',
       ],
+      uv: '88',
       idInfraestructura: 1,
       idTipoColegio: 1,
       idTurno: 3
