@@ -103,6 +103,9 @@ export class UnidadeseducativasService {
         .leftJoinAndSelect("unidadeducativa.apoyosGubernamentales", "Apoyosgubernamentale") 
         .leftJoinAndSelect("unidadeducativa.desayunos", "Desayuno") 
         .leftJoinAndSelect("unidadeducativa.mantenimientos", "Mantenimiento") 
+        .leftJoinAndSelect("unidadeducativa.denuncias", "Denuncia")
+        .leftJoinAndSelect("unidadeducativa.visitas", "Visita")
+        
         .getOne();
 
     if(!unidadeducativa){
