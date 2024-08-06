@@ -2,11 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { VisitasService } from './visitas.service';
 import { CreateVisitaDto } from './dto/create-visita.dto';
 import { UpdateVisitaDto } from './dto/update-visita.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Visita } from './entities/visita.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Controller('visitas')
+@ApiTags('Visitas')
 export class VisitasController {
   constructor(private readonly visitasService: VisitasService) {}
 
