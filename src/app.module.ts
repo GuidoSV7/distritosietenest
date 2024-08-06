@@ -28,6 +28,7 @@ import { NumerosemergenciasModule } from './numerosemergencias/numerosemergencia
 import { CentrosaludhasespecialidadesModule } from './centrosaludhasespecialidades/centrosaludhasespecialidades.module';
 import { OficinadistritalModule } from './oficinadistrital/oficinadistrital.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { VisitasModule } from './visitas/visitas.module';
 
 
 @Module({
@@ -104,7 +105,9 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 
     OficinadistritalModule,
 
-    UsuariosModule
+    UsuariosModule,
+
+    VisitasModule
 
 
   ],

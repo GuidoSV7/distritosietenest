@@ -11,6 +11,7 @@ import { Apoyosgubernamentale } from 'src/apoyosgubernamentales/entities/apoyosg
 import { Mantenimiento } from 'src/mantenimientos/entities/mantenimiento.entity';
 import { Desayuno } from 'src/desayunos/entities/desayuno.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { Visita } from 'src/visitas/entities/visita.entity';
 
 @Entity({name: 'unidades_educativas'})
 
@@ -239,7 +240,20 @@ export class Unidadeseducativa {
     @OneToMany(()=> Mantenimiento, (mantenimientos) => mantenimientos.unidadeducativa, {eager:false})
     mantenimientos: Mantenimiento[]
 
-
+    @ApiProperty({
+        type: () => Mantenimiento,
+        isArray: true,
+        description: 'La lista de Visitas asociados a esta unidad educativa.',
+        example: [{id: 1, 
+            titulo: 'Fumigacion del Parque', 
+            fecha: '2023-07-10', 
+            motivo: 'Revisar Fugas en Instalaciones de la UE', 
+            fotoUrl: "http://www.foto.com" }]
+  
+      })
+    //Mantenimientos
+    @OneToMany(()=> Visita, (visitas) => visitas.unidadeducativa, {eager:false})
+    visitas: Visita[]
       
 
 
