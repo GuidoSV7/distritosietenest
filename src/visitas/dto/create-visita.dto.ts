@@ -29,13 +29,13 @@ export class CreateVisitaDto {
     motivo: string;
 
     @ApiProperty({
-        description: 'Foto de quienes Visitaron',
+        description: 'Nombres de los Visitantes',
         nullable: false,
         minLength: 1,
     })
     @IsString()
     @IsOptional()
-    fotoUrl: string;
+    visitantes: string;
 
     @ApiProperty({
         description: 'ID de la Unidad Educativa a la que pertenece la Visita',

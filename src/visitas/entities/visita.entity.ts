@@ -38,13 +38,13 @@ export class Visita {
 
 
     @ApiProperty({
-      example: 'https://www.foto.com',
-      description: 'Foto de los Visitantes'
+      example: 'Ronald Camino, Ronaldo Sahonero, Jose Camino',
+      description: 'Nombre de los Visitantes'
     })
     @Column('text',{
         nullable: true,  
     })
-    fotoUrl: string;
+    visitantes: string;
 
     @ManyToOne(() => Unidadeseducativa, (unidadeducativa) => unidadeducativa.visitas,{onDelete: 'CASCADE'})
     @JoinColumn({ name: 'idUnidadEducativa' ,}) 
