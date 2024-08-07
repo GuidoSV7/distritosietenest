@@ -237,7 +237,7 @@ export class Unidadeseducativa {
   
       })
     //Mantenimientos
-    @OneToMany(()=> Mantenimiento, (mantenimientos) => mantenimientos.unidadeducativa, {eager:false})
+    @OneToMany(()=> Mantenimiento, (mantenimientos) => mantenimientos.unidadeducativa, {eager:true})
     mantenimientos: Mantenimiento[]
 
     @ApiProperty({
@@ -252,7 +252,7 @@ export class Unidadeseducativa {
   
       })
     //Mantenimientos
-    @OneToMany(()=> Visita, (visitas) => visitas.unidadeducativa, {eager:false})
+    @OneToMany(()=> Visita, (visitas) => visitas.unidadeducativa, {eager:true})
     visitas: Visita[]
       
 
