@@ -7,7 +7,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { Centrospoliciale } from './entities/centrospoliciale.entity';
 
-@ApiTags('Policiales')
+@ApiTags('Centros Policiales')
 @Controller('centrospoliciales')
 export class CentrospolicialesController {
   constructor(private readonly centrospolicialesService: CentrospolicialesService) {}
