@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { Apoyosgubernamentale } from './entities/apoyosgubernamentale.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { CategoriasService } from 'src/categorias/categorias.service';
 
 @Injectable()
 export class ApoyosgubernamentalesService {
@@ -17,6 +18,8 @@ export class ApoyosgubernamentalesService {
 
     @InjectRepository(Apoyosgubernamentale)
     private readonly apoyogubernamentaleRepository: Repository<Apoyosgubernamentale>,
+
+    private readonly categoriaService: CategoriasService,
     
     
     private readonly dataSource: DataSource,
@@ -73,7 +76,7 @@ export class ApoyosgubernamentalesService {
 
   async update(id: number, updateApoyosgubernamentaleDto: UpdateApoyosgubernamentaleDto) {
 
-    const {...toUpdate} = updateApoyosgubernamentaleDto;
+    const {idCategoria,...toUpdate} = updateApoyosgubernamentaleDto;
 
     const apoyosociale = await this.apoyogubernamentaleRepository.preload({id, ...toUpdate});
 
@@ -89,6 +92,10 @@ export class ApoyosgubernamentalesService {
     await queryRunner.startTransaction();
 
     try{
+
+      if(idCategoria){
+        apoyosociale.categoria = await this.categoriaService.findOne(idCategoria);
+      }
 
 
 
