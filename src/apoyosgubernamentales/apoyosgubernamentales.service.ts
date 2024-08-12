@@ -97,7 +97,7 @@ export class ApoyosgubernamentalesService {
         apoyosociale.categoria = await this.categoriaService.findOne(idCategoria);
       }
 
-
+//
 
       await queryRunner.manager.save(apoyosociale);
 
@@ -127,7 +127,7 @@ export class ApoyosgubernamentalesService {
 
     await this.apoyogubernamentaleRepository.remove(apoyosociale);
 
-    return { mensaje: `La apoyosociale con id ${id} se eliminó exitosamente.` };
+    return { mensaje: `El apoyo Gubernamental con id ${id} se eliminó exitosamente.` };
 
   }
 
