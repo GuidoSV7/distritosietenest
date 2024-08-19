@@ -54,4 +54,13 @@ export class CreateCentrosturisticoDto {
     @IsArray()
     @IsOptional()
     fotos?: string[];
+
+    @ApiProperty({
+        description: 'Servicios públicos disponibles en el Centro Policial',
+        nullable: true,
+        type: [String]
+    })
+    @IsOptional()
+    @IsString({ each: true })
+    serviciosPublicos?: string[];
 }

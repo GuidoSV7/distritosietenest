@@ -130,4 +130,13 @@ export class CreateUnidadeseducativaDto {
       @Type(() => CreateGestioneDto) 
       gestion?: CreateGestioneDto[];
 
+      @ApiProperty({
+        description: 'Servicios públicos disponibles en el Centro Policial',
+        nullable: true,
+        type: [String]
+    })
+    @IsOptional()
+    @IsString({ each: true })
+    serviciosPublicos?: string[];
+
 }

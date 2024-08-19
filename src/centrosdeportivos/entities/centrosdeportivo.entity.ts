@@ -72,6 +72,18 @@ export class CentrosDeportivos {
         {cascade: true, eager:true}
     )
     fotos?: CentrosDeportivoFoto[];
+
+    @ApiProperty({
+        example: ' ["Ayuda en emergencia","Servicio Social"]',
+        description: 'Servicios que ofrece el Centro Deportivo',
+        nullable: true
+
+    })
+    @Column('text',{
+        array:true,
+        nullable: true,  
+    })
+    serviciosPublicos?: string[];
    
   
 }

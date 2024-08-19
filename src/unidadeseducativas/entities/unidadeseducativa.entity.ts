@@ -254,6 +254,18 @@ export class Unidadeseducativa {
     //Mantenimientos
     @OneToMany(()=> Visita, (visitas) => visitas.unidadeducativa, {eager:true})
     visitas: Visita[]
+
+    @ApiProperty({
+        example: ' ["Ayuda en emergencia","Servicio Social"]',
+        description: 'Servicios que ofrece la Unidad Educativa',
+        nullable: true
+
+    })
+    @Column('text',{
+        array:true,
+        nullable: true,  
+    })
+    serviciosPublicos?: string[];
       
 
 

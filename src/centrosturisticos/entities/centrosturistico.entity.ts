@@ -73,5 +73,17 @@ export class CentrosTuristico {
         {cascade: true, eager:true}
     )
     fotos?: CentrosTuristicoFoto[];
+
+    @ApiProperty({
+        example: ' ["Ayuda en emergencia","Servicio Social"]',
+        description: 'Servicios que ofrece el centro turistico',
+        nullable: true
+
+    })
+    @Column('text',{
+        array:true,
+        nullable: true,  
+    })
+    serviciosPublicos?: string[];
  
 }
