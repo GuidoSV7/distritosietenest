@@ -80,6 +80,7 @@ export class Oficinadistrital {
 
     })
     @Column('text',{
+        array:true,
         nullable: true,  
     })
     serviciosPublicos?: string[];

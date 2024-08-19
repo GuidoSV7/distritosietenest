@@ -31,64 +31,42 @@ export class OficinadistritalService {
     });
     
   }
-  async findOne(id : number) {
 
-    let oficinaDistrital: Oficinadistrital;
+  async findOne(): Promise<Oficinadistrital> {
+    let oficinaDistrital = await this.oficinaDistritalRepository.find({
+      take: 1,
+    }).then(results => results[0]);
 
-      const queryBuilder = this.oficinaDistritalRepository.createQueryBuilder();
-      oficinaDistrital = await queryBuilder
-        .where('id =:id ',{
-          id:id,
-        })
-        .getOne();
-
-    if(!oficinaDistrital){
-      throw new NotFoundException( `OficinaDistrital con id ${id} no encontrada`);
+    if (!oficinaDistrital) {
+      oficinaDistrital = this.oficinaDistritalRepository.create({
+        encargado: 'Default Encargado',
+        coordenada_x: 0,
+        coordenada_y: 0,
+        direccion: 'Default Dirección',
+        fotoUrl: '',
+        numeroTelefono: 34636,
+        serviciosPublicos: [],
+      });
+      await this.oficinaDistritalRepository.save(oficinaDistrital);
     }
-
     return oficinaDistrital;
-    
   }
 
-  async update(id: number, updateOficinaDistritalDto: UpdateOficinadistritalDto) {
-
-    const {...toUpdate} = updateOficinaDistritalDto;
-
-    const oficinaDistrital = await this.oficinaDistritalRepository.preload({id, 
-      ...toUpdate, 
-    });
-
-    if(!oficinaDistrital){
-      throw new NotFoundException(`OficinaDistrital con id ${id} no encontrada`);
+  async update(p0: number, updateOficinadistritalDto: UpdateOficinadistritalDto): Promise<Oficinadistrital> {
+    let oficina = await this.oficinaDistritalRepository.find({
+      take: 1,
+    }).then(results => results[0]);
+    if (!oficina) {
+      oficina = this.oficinaDistritalRepository.create(updateOficinadistritalDto);
+    } else {
+      Object.assign(oficina, updateOficinadistritalDto);
     }
-
-    //Create Query Runner
-    const queryRunner = this.dataSource.createQueryRunner();
-    
-    await queryRunner.connect();
-
-    await queryRunner.startTransaction();
-
-    try{
-
-      await queryRunner.manager.save(oficinaDistrital);
-
-      await queryRunner.commitTransaction();
-      await queryRunner.release();
-
-      await this.oficinaDistritalRepository.save(oficinaDistrital);
-      return this.findOne(id);
-
-    } catch{
-      
-      await queryRunner.rollbackTransaction();
-      await queryRunner.release();
-
-      throw new InternalServerErrorException('Error al actualizar los datos de la OficinaDistrital');
-    }
+    return this.oficinaDistritalRepository.save(oficina);
+  }
   
     
-  }
+ }
 
 
-}
+
+

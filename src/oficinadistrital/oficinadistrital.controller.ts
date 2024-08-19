@@ -2,7 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { OficinadistritalService } from './oficinadistrital.service';
 import { UpdateOficinadistritalDto } from './dto/update-oficinadistrital.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Oficinadistrital } from './entities/oficinadistrital.entity';
 
 @ApiTags('OficinaDistrital')
 @Controller('oficinadistrital')
@@ -11,18 +12,19 @@ export class OficinadistritalController {
 
 
 
+
   @Get()
-  findAll( @Query() paginationDto:PaginationDto)  {
-    return this.oficinadistritalService.findAll(paginationDto);
+  @ApiResponse({ status: 200, description: 'La oficina distrital', type: Oficinadistrital })
+  @ApiResponse({ status: 404, description: 'Oficina Distrital no encontrada' })
+  findOne() {
+    return this.oficinadistritalService.findOne();
   }
 
-
-  @Patch(':id')
-  update(@Param('id') id: number, 
-        @Body() updateoficinaDistritalDto: UpdateOficinadistritalDto) 
-        {
-    return this.oficinadistritalService.update(id, updateoficinaDistritalDto);
+  @Patch()
+  @ApiResponse({ status: 200, description: 'Oficina Distrital actualizada', type: Oficinadistrital })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
+  update(@Body() updateOficinadistritalDto: UpdateOficinadistritalDto) {
+    return this.oficinadistritalService.update(1, updateOficinadistritalDto); // Asume que siempre hay una única instancia con id 1
   }
-
 
 }
