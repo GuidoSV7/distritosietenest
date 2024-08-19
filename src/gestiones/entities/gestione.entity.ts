@@ -19,7 +19,7 @@ export class Gestione {
         description: 'Numero operativo de la Gestion'
 
     })
-    @Column('text',{
+    @Column('int',{
         nullable: true,  
     })
     numero: number;
