@@ -95,6 +95,7 @@ export class Centrospoliciale {
 
     })
     @Column('text',{
+        array:true,
         nullable: true,  
     })
     serviciosPublicos?: string[];
