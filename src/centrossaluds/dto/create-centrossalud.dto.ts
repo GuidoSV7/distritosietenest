@@ -50,14 +50,14 @@ export class CreateCentrossaludDto {
     })
     @IsString()
     @IsOptional()
-    video: string;
+    videoUrl: string;
 
     @ApiProperty({
         description: 'URL de la página web del Centro de Salud',
     })
     @IsString()
     @IsOptional()
-    paginaweburl: string;
+    paginawebUrl: string;
 
     @ApiProperty({
         description: ' Fotos del Centro de Salud',

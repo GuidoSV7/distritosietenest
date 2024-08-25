@@ -54,11 +54,12 @@ export class VisitasService {
 
     let visita: Visita;
 
-      const queryBuilder = this.visitaRepository.createQueryBuilder();
+      const queryBuilder = this.visitaRepository.createQueryBuilder("visita");
       visita = await queryBuilder
-        .where('id =:id ',{
+        .where('visita.id =:id ',{
           id:id,
         })
+        .leftJoinAndSelect('visita.unidadeducativa','unidadeducativa')
         .getOne();
 
     if(!visita){
