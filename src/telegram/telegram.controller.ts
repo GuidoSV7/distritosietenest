@@ -8,7 +8,7 @@ import { ApiExcludeEndpoint } from '@nestjs/swagger';
 @Controller('telegram')
 export class TelegramController {
   constructor(private readonly telegramService: TelegramService) {}
-  @ApiExcludeEndpoint()
+  
   @Post('sendMessage')
   sendMessage(@Body() createMessageTelegramDto: CreateMessageTelegramDto) {
     return this.telegramService.sendMessage(createMessageTelegramDto);
