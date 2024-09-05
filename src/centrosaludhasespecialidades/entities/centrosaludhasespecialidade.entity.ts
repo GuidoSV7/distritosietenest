@@ -6,10 +6,10 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "t
 @Entity('centrosalud_has_especialidad')
 export class CentroSaludHasEspecialidade {
     @PrimaryGeneratedColumn()
-    id: number;ç
+    id: number;
 
   
-    @ManyToOne(() => CentrosSaluds)
+    @ManyToOne(() => CentrosSaluds,)
     @JoinColumn({ name: 'idCentroSalud' })
     idCentroSalud: CentrosSaluds;
 

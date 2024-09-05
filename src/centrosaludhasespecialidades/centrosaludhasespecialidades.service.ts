@@ -63,12 +63,13 @@ export class CentrosaludhasespecialidadesService {
 
     let centrosaludhasespecialidade: CentroSaludHasEspecialidade;
 
-      const queryBuilder = this.centrosaludhasespecialidadeRepository.createQueryBuilder();
+      const queryBuilder = this.centrosaludhasespecialidadeRepository.createQueryBuilder('centrossaludhasespecialidade');
       centrosaludhasespecialidade = await queryBuilder
-        .where('id =:id ',{
-
+        .where('centrossaludhasespecialidade.id =:id ',{
           id:id,
         })
+        .leftJoinAndSelect("centrossaludhasespecialidade.idCentroSalud", "idCentroSalud")
+        .leftJoinAndSelect("centrossaludhasespecialidade.idEspecialidad", "idEspecialidad")
         .getOne();
 
     if(!centrosaludhasespecialidade){
